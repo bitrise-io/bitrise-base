@@ -14,8 +14,16 @@ ENV BITRISE_SOURCE_DIR "/bitrise/src"
 ENV BITRISE_BRIDGE_WORKDIR "/bitrise/src"
 ENV BITRISE_DEPLOY_DIR "/bitrise/deploy"
 
-RUN apt-get update
+# create base dirs
+RUN mkdir -p /bitrise/src
+RUN mkdir -p /bitrise/deploy
 
+# prep dir
+RUN mkdir -p /bitrise/prep
+WORKDIR /bitrise/prep
+
+
+RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git mercurial curl rsync ruby sudo
 
 #
@@ -24,7 +32,5 @@ RUN curl -fL https://github.com/bitrise-io/bitrise/releases/download/1.2.2/bitri
 RUN chmod +x /usr/local/bin/bitrise
 RUN bitrise setup --minimal
 
-RUN mkdir -p /bitrise/src
-WORKDIR /bitrise/src
 
 CMD ls -alh
