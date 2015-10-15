@@ -2,8 +2,10 @@ FROM ubuntu:14.04
 
 # Environments
 # - Language
-ENV LC_ALL "en_US.UTF-8"
+RUN locale-gen en_US.UTF-8
 ENV LANG "en_US.UTF-8"
+ENV LANGUAGE "en_US.UTF-8"
+ENV LC_ALL "en_US.UTF-8"
 # - CI
 ENV CI "true"
 ENV BITRISE_IO "true"
