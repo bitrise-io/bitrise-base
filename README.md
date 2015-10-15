@@ -1,2 +1,1 @@
-# docker-bitrise-base
-Base Bitrise Docker image
+# Base Bitrise Docker image
