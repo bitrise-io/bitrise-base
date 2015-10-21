@@ -32,5 +32,6 @@ RUN curl -fL https://github.com/bitrise-io/bitrise/releases/download/1.2.2/bitri
 RUN chmod +x /usr/local/bin/bitrise
 RUN bitrise setup --minimal
 
+WORKDIR $BITRISE_SOURCE_DIR
 
 CMD ls -alh
