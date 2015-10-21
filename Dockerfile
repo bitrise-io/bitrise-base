@@ -24,7 +24,7 @@ WORKDIR /bitrise/prep
 
 
 RUN apt-get -y update
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git mercurial curl wget rsync ruby sudo
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git mercurial curl wget rsync sudo
 
 # install Ruby from source
 #  from source: mainly because of GEM native extensions,
