@@ -29,7 +29,7 @@ WORKDIR /bitrise/prep
 
 # ------------------------------------------------------
 # --- Base pre-installed tools
-RUN apt-get update
+RUN apt-get update -qq
 # Requiered for Bitrise CLI
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git mercurial curl wget rsync sudo
 # Common, useful
