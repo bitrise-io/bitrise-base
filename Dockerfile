@@ -1,5 +1,9 @@
 FROM ubuntu:14.04
 
+
+# ------------------------------------------------------
+# --- Environments and base directories
+
 # Environments
 # - Language
 RUN locale-gen en_US.UTF-8
@@ -23,8 +27,20 @@ RUN mkdir -p /bitrise/prep
 WORKDIR /bitrise/prep
 
 
-RUN apt-get -y update
+# ------------------------------------------------------
+# --- Base pre-installed tools
+RUN apt-get update
+# Requiered for Bitrise CLI
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git mercurial curl wget rsync sudo
+# Common, useful
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install python
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install build-essential
+# For PPAs
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y software-properties-common
+
+
+# ------------------------------------------------------
+# --- Pre-installed but not through apt-get
 
 # install Ruby from source
 #  from source: mainly because of GEM native extensions,
@@ -39,6 +55,7 @@ RUN rm ruby-2.2.3.tar.gz
 
 RUN gem install bundler --no-document
 
+
 # install Go
 #  from official binary package
 RUN wget https://storage.googleapis.com/golang/go1.5.1.linux-amd64.tar.gz -O go-bins.tar.gz
@@ -46,12 +63,24 @@ RUN tar -C /usr/local -xvzf go-bins.tar.gz
 RUN rm go-bins.tar.gz
 ENV PATH $PATH:/usr/local/go/bin
 
+
+# ------------------------------------------------------
+# --- Bitrise CLI
+
 #
 # Install Bitrise CLI
 RUN curl -fL https://github.com/bitrise-io/bitrise/releases/download/1.2.3/bitrise-$(uname -s)-$(uname -m) > /usr/local/bin/bitrise
 RUN chmod +x /usr/local/bin/bitrise
 RUN bitrise setup --minimal
 
+
+# ------------------------------------------------------
+# --- Cleanup, Workdir and revision
+
+# Cleaning
+RUN apt-get clean
+
 WORKDIR $BITRISE_SOURCE_DIR
 
-CMD ls -alh
+ENV BITRISE_DOCKER_REV_NUMBER_BASE 2
+CMD bitrise --version
