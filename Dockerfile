@@ -72,6 +72,10 @@ ENV PATH $PATH:/usr/local/go/bin
 RUN curl -fL https://github.com/bitrise-io/bitrise/releases/download/1.2.3/bitrise-$(uname -s)-$(uname -m) > /usr/local/bin/bitrise
 RUN chmod +x /usr/local/bin/bitrise
 RUN bitrise setup --minimal
+# setup the default StepLib collection to stepman, for a pre-warmed
+#  cache for the StepLib
+RUN stepman setup -c https://github.com/bitrise-io/bitrise-steplib.git
+RUN stepman update
 
 
 # ------------------------------------------------------
