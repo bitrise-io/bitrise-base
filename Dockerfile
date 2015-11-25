@@ -64,6 +64,12 @@ RUN rm go-bins.tar.gz
 ENV PATH $PATH:/usr/local/go/bin
 
 
+# docker-compose
+RUN curl -fL https://github.com/docker/compose/releases/download/1.5.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+RUN chmod +x /usr/local/bin/docker-compose
+RUN docker-compose --version
+
+
 # ------------------------------------------------------
 # --- Bitrise CLI
 
