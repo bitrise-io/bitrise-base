@@ -64,6 +64,19 @@ RUN rm go-bins.tar.gz
 ENV PATH $PATH:/usr/local/go/bin
 
 
+# Install docker
+#  as described at: https://docs.docker.com/engine/installation/ubuntulinux/
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y apt-transport-https
+RUN apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+# Ubuntu Trusty 14.04 (LTS)
+RUN echo 'deb https://apt.dockerproject.org/repo ubuntu-trusty main' > /etc/apt/sources.list.d/docker.list
+RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq
+RUN DEBIAN_FRONTEND=noninteractive apt-get purge lxc-docker*
+RUN DEBIAN_FRONTEND=noninteractive apt-cache policy docker-engine
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y linux-image-extra-$(uname -r)
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y docker-engine=1.9.1-0~trusty
+
+
 # docker-compose
 RUN curl -fL https://github.com/docker/compose/releases/download/1.5.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 RUN chmod +x /usr/local/bin/docker-compose
@@ -92,5 +105,5 @@ RUN apt-get clean
 
 WORKDIR $BITRISE_SOURCE_DIR
 
-ENV BITRISE_DOCKER_REV_NUMBER_BASE 2
+ENV BITRISE_DOCKER_REV_NUMBER_BASE 3
 CMD bitrise --version
