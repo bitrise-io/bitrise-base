@@ -73,7 +73,7 @@ RUN echo 'deb https://apt.dockerproject.org/repo ubuntu-trusty main' > /etc/apt/
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq
 RUN DEBIAN_FRONTEND=noninteractive apt-get purge lxc-docker*
 RUN DEBIAN_FRONTEND=noninteractive apt-cache policy docker-engine
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y linux-image-extra-$(uname -r)
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y linux-image-extra-3.19.0-33-generic
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y docker-engine=1.9.1-0~trusty
 
 
