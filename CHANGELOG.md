@@ -4,3 +4,4 @@
 * `ruby` updated to `2.2.4`
 * `go` updated to `1.5.2`
 * `docker-compose` update to `1.5.2`
+* `Go` Workspace dirs & envs (e.g. `$GOPATH`)
