@@ -62,7 +62,14 @@ RUN gem install bundler --no-document
 RUN wget -q https://storage.googleapis.com/golang/go1.5.2.linux-amd64.tar.gz -O go-bins.tar.gz
 RUN tar -C /usr/local -xvzf go-bins.tar.gz
 RUN rm go-bins.tar.gz
+# ENV setup
 ENV PATH $PATH:/usr/local/go/bin
+# Go Workspace dirs & envs
+# From the official Golang Dockerfile
+#  https://raw.githubusercontent.com/docker-library/golang/master/1.5/Dockerfile
+ENV GOPATH /go
+ENV PATH $GOPATH/bin:$PATH
+RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 
 
 # Install docker
