@@ -47,19 +47,19 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y software-properties-common
 #  from source: mainly because of GEM native extensions,
 #  this is the most reliable way to use Ruby no Ubuntu if GEM native extensions are required
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install build-essential zlib1g-dev libssl-dev libreadline6-dev libyaml-dev
-RUN wget -q http://cache.ruby-lang.org/pub/ruby/ruby-2.2.3.tar.gz
-RUN tar -xvzf ruby-2.2.3.tar.gz
-RUN cd ruby-2.2.3 && ./configure --prefix=/usr/local && make && make install
+RUN wget -q http://cache.ruby-lang.org/pub/ruby/ruby-2.2.4.tar.gz
+RUN tar -xvzf ruby-2.2.4.tar.gz
+RUN cd ruby-2.2.4 && ./configure --prefix=/usr/local && make && make install
 # cleanup
-RUN rm -rf ruby-2.2.3
-RUN rm ruby-2.2.3.tar.gz
+RUN rm -rf ruby-2.2.4
+RUN rm ruby-2.2.4.tar.gz
 
 RUN gem install bundler --no-document
 
 
 # install Go
 #  from official binary package
-RUN wget -q https://storage.googleapis.com/golang/go1.5.1.linux-amd64.tar.gz -O go-bins.tar.gz
+RUN wget -q https://storage.googleapis.com/golang/go1.5.2.linux-amd64.tar.gz -O go-bins.tar.gz
 RUN tar -C /usr/local -xvzf go-bins.tar.gz
 RUN rm go-bins.tar.gz
 ENV PATH $PATH:/usr/local/go/bin
@@ -79,7 +79,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y docker-engine=1.9.1-0~trus
 
 
 # docker-compose
-RUN curl -fL https://github.com/docker/compose/releases/download/1.5.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+RUN curl -fL https://github.com/docker/compose/releases/download/1.5.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 RUN chmod +x /usr/local/bin/docker-compose
 RUN docker-compose --version
 
@@ -106,5 +106,5 @@ RUN apt-get clean
 
 WORKDIR $BITRISE_SOURCE_DIR
 
-ENV BITRISE_DOCKER_REV_NUMBER_BASE 3
+ENV BITRISE_DOCKER_REV_NUMBER_BASE 4
 CMD bitrise --version
