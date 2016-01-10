@@ -1,4 +1,8 @@
-## 2016.01.09
+## 2016_01_10_1
+
+* `$GOPATH` chmod change to `755`, because Ruby complains if `777` (`warning: Insecure world writable dir ... in PATH`)
+
+## 2016_01_09_1
 
 * `unzip` is now pre-installed
 * `ruby` updated to `2.2.4`

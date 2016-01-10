@@ -69,7 +69,8 @@ ENV PATH $PATH:/usr/local/go/bin
 #  https://raw.githubusercontent.com/docker-library/golang/master/1.5/Dockerfile
 ENV GOPATH /go
 ENV PATH $GOPATH/bin:$PATH
-RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
+# 755 because Ruby complains if 777 (warning: Insecure world writable dir ... in PATH)
+RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 755 "$GOPATH"
 
 
 # Install docker
@@ -113,5 +114,5 @@ RUN apt-get clean
 
 WORKDIR $BITRISE_SOURCE_DIR
 
-ENV BITRISE_DOCKER_REV_NUMBER_BASE 2016_01_09_1
+ENV BITRISE_DOCKER_REV_NUMBER_BASE 2016_01_10_1
 CMD bitrise --version
