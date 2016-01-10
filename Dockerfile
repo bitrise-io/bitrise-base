@@ -36,6 +36,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git mercurial curl wget rs
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install python
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install build-essential
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install unzip
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install tree
 # For PPAs
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y software-properties-common
 
