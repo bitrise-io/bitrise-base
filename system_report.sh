@@ -28,7 +28,7 @@ ver_line="$(tar --version | head -n 1)" ;         echo "* tar: $ver_line"
 ver_line="$(tree --version)" ;                    echo "* tree: $ver_line"
 
 echo
-ver_line="$(sudo --version 2>&1  | grep 'Sudo version')" ; echo "* sudo: $ver_line"
+ver_line="$(sudo --version 2>&1 | grep 'Sudo version')" ; echo "* sudo: $ver_line"
 
 echo
 ver_line="$(docker --version)" ;                  echo "* docker: $ver_line"
@@ -39,6 +39,21 @@ echo "--- Bitrise CLI tool versions"
 ver_line="$(bitrise --version)" ;                 echo "* bitrise: $ver_line"
 ver_line="$(stepman --version)" ;                 echo "* stepman: $ver_line"
 ver_line="$(envman --version)" ;                  echo "* envman: $ver_line"
+echo "========================================"
+echo
+
+echo
+echo "=== Linux info ========================="
+echo "* uname -a"
+uname -a
+echo "* lsb_release --all"
+lsb_release --all
+echo "========================================"
+echo
+
+echo
+echo "=== Docker info ========================"
+docker info
 echo "========================================"
 echo
 
