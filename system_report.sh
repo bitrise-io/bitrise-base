@@ -11,35 +11,40 @@ echo
 #  a single line!
 echo
 echo "=== Pre-installed tool versions ========"
-echo "* Go: $(go version)"
-echo "* Ruby: $(ruby --version)"
-echo "  * bundler: $(bundle --version)"
-echo "* Python: $(python --version 2>&1 >/dev/null)"
+
+ver_line="$(go version)" ;                        echo "* Go: $ver_line"
+ver_line="$(ruby --version)" ;                    echo "* Ruby: $ver_line"
+ver_line="$(bundle --version)" ;                  echo "  * bundler: $ver_line"
+ver_line="$(python --version 2>&1 >/dev/null)" ;  echo "* Python: $ver_line"
+
 echo
-echo "* git: $(git --version)"
-echo "* mercurial/hg: $(hg --version | grep version)"
-echo "* curl: $(curl --version | grep curl)"
-echo "* wget: $(wget --version | grep 'GNU Wget')"
-echo "* rsync: $(rsync --version | grep version)"
-echo "* unzip: $(unzip -v | head -n 1)"
-echo "* tar: $(tar --version | head -n 1)"
-echo "* tree: $(tree --version)"
+ver_line="$(git --version)" ;                     echo "* git: $ver_line"
+ver_line="$(hg --version | grep version)" ;       echo "* mercurial/hg: $ver_line"
+ver_line="$(curl --version | grep curl)" ;        echo "* curl: $ver_line"
+ver_line="$(wget --version | grep 'GNU Wget')" ;  echo "* wget: $ver_line"
+ver_line="$(rsync --version | grep version)" ;    echo "* rsync: $ver_line"
+ver_line="$(unzip -v | head -n 1)" ;              echo "* unzip: $ver_line"
+ver_line="$(tar --version | head -n 1)" ;         echo "* tar: $ver_line"
+ver_line="$(tree --version)" ;                    echo "* tree: $ver_line"
+
 echo
-echo "* docker: $(docker --version)"
-echo "* docker-compose: $(docker-compose --version)"
+ver_line="$(sudo --version 2>&1  | grep 'Sudo version')" ; echo "* sudo: $ver_line"
+
 echo
-echo "* sudo: $(sudo --version 2>&1  | grep 'Sudo version')"
+ver_line="$(docker --version)" ;                  echo "* docker: $ver_line"
+ver_line="$(docker-compose --version)" ;          echo "* docker-compose: $ver_line"
+
 echo
 echo "--- Bitrise CLI tool versions"
-echo "* bitrise: $(bitrise --version)"
-echo "* stepman: $(stepman --version)"
-echo "* envman: $(envman --version)"
+ver_line="$(bitrise --version)" ;                 echo "* bitrise: $ver_line"
+ver_line="$(stepman --version)" ;                 echo "* stepman: $ver_line"
+ver_line="$(envman --version)" ;                  echo "* envman: $ver_line"
 echo "========================================"
 echo
 
 echo
 echo "=== System infos ======================="
-echo "* Free disk space: $( df -kh / | grep '/' )"
+info_line="$( df -kh / | grep '/' )" ;            echo "* Free disk space: $info_line"
 echo "* Free RAM & swap:"
 free -mh
 echo "========================================"
