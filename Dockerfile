@@ -60,7 +60,7 @@ RUN gem install bundler --no-document
 
 # install Go
 #  from official binary package
-RUN wget -q https://storage.googleapis.com/golang/go1.5.2.linux-amd64.tar.gz -O go-bins.tar.gz
+RUN wget -q https://storage.googleapis.com/golang/go1.6.linux-amd64.tar.gz -O go-bins.tar.gz
 RUN tar -C /usr/local -xvzf go-bins.tar.gz
 RUN rm go-bins.tar.gz
 # ENV setup
@@ -83,12 +83,12 @@ RUN echo 'deb https://apt.dockerproject.org/repo ubuntu-trusty main' > /etc/apt/
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq
 RUN DEBIAN_FRONTEND=noninteractive apt-get purge lxc-docker*
 RUN DEBIAN_FRONTEND=noninteractive apt-cache policy docker-engine
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y linux-image-extra-3.19.0-33-generic
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y docker-engine=1.9.1-0~trusty
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y linux-image-extra-`uname -r`
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y docker-engine=1.10.2-0~trusty
 
 
 # docker-compose
-RUN curl -fL https://github.com/docker/compose/releases/download/1.5.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+RUN curl -fL https://github.com/docker/compose/releases/download/1.6.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 RUN chmod +x /usr/local/bin/docker-compose
 RUN docker-compose --version
 
