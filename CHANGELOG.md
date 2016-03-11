@@ -1,3 +1,9 @@
+## 2016_03_11_1
+
+* `Go`: 1.6
+* `Docker`: 1.10.2
+* `docker-compose`: 1.6.2
+
 ## 2016_01_10_1
 
 * `$GOPATH` chmod change to `755`, because Ruby complains if `777` (`warning: Insecure world writable dir ... in PATH`)
