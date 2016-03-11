@@ -53,6 +53,8 @@ echo
 echo "=== Linux info ========================="
 echo "* uname -a"
 uname -a
+echo "* uname -r"
+uname -r
 echo "* lsb_release --all"
 lsb_release --all
 echo "========================================"
