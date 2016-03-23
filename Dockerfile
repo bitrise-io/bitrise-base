@@ -84,7 +84,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq
 RUN DEBIAN_FRONTEND=noninteractive apt-get purge lxc-docker*
 RUN DEBIAN_FRONTEND=noninteractive apt-cache policy docker-engine
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y linux-image-extra-`uname -r`
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y docker-engine=1.10.2-0~trusty
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y docker-engine=1.10.3-0~trusty
 
 
 # docker-compose
