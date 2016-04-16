@@ -31,6 +31,7 @@ ver_line="$(curl --version | grep curl)" ;        echo "* curl: $ver_line"
 ver_line="$(wget --version | grep 'GNU Wget')" ;  echo "* wget: $ver_line"
 ver_line="$(rsync --version | grep version)" ;    echo "* rsync: $ver_line"
 ver_line="$(unzip -v | head -n 1)" ;              echo "* unzip: $ver_line"
+ver_line="$(zip -v | head -n 2 | tail -n 1)";     echo "* zip: $ver_line"
 ver_line="$(tar --version | head -n 1)" ;         echo "* tar: $ver_line"
 ver_line="$(tree --version)" ;                    echo "* tree: $ver_line"
 
