@@ -1,3 +1,7 @@
+## 2016_04_16_2
+
+* `/bitrise/cache` dir, exposed as `$BITRISE_CACHE_DIR` Env Var
+
 ## 2016_04_16_1
 
 * `bitrise` (CLI): 1.3.0

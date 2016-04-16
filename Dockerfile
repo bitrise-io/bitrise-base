@@ -17,10 +17,12 @@ ENV BITRISE_IO "true"
 ENV BITRISE_SOURCE_DIR "/bitrise/src"
 ENV BITRISE_BRIDGE_WORKDIR "/bitrise/src"
 ENV BITRISE_DEPLOY_DIR "/bitrise/deploy"
+ENV BITRISE_CACHE_DIR "/bitrise/cache"
 
 # create base dirs
 RUN mkdir -p /bitrise/src
 RUN mkdir -p /bitrise/deploy
+RUN mkdir -p /bitrise/cache
 
 # prep dir
 RUN mkdir -p /bitrise/prep
@@ -116,5 +118,5 @@ RUN apt-get clean
 
 WORKDIR $BITRISE_SOURCE_DIR
 
-ENV BITRISE_DOCKER_REV_NUMBER_BASE 2016_04_16_1
+ENV BITRISE_DOCKER_REV_NUMBER_BASE 2016_04_16_2
 CMD bitrise --version
