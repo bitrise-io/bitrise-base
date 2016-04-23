@@ -63,7 +63,7 @@ RUN gem install bundler --no-document
 
 # install Go
 #  from official binary package
-RUN wget -q https://storage.googleapis.com/golang/go1.6.1.linux-amd64.tar.gz -O go-bins.tar.gz
+RUN wget -q https://storage.googleapis.com/golang/go1.6.2.linux-amd64.tar.gz -O go-bins.tar.gz
 RUN tar -C /usr/local -xvzf go-bins.tar.gz
 RUN rm go-bins.tar.gz
 # ENV setup
@@ -118,5 +118,5 @@ RUN apt-get clean
 
 WORKDIR $BITRISE_SOURCE_DIR
 
-ENV BITRISE_DOCKER_REV_NUMBER_BASE 2016_04_21_1
+ENV BITRISE_DOCKER_REV_NUMBER_BASE 2016_04_23_1
 CMD bitrise --version
