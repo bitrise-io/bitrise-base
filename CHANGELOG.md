@@ -1,3 +1,8 @@
+## 2016_05_25_2
+
+* Fix in `bitrise.yml`, to be able to run `system_report.sh`, which needs access to `docker`
+
+
 ## 2016_05_25_1
 
 * "Checkpoint", before migration to Ubuntu 16.04
