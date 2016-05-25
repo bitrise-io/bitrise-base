@@ -1,3 +1,8 @@
+## 2016_05_25_1
+
+* "Checkpoint", before migration to Ubuntu 16.04
+
+
 ## 2016_05_14_1
 
 * `bitrise` (CLI): 1.3.4
