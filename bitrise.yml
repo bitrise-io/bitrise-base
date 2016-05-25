@@ -41,7 +41,7 @@ workflows:
             set -e
             set -x
 
-            docker run --rm -v "$(pwd)/system_report.sh:/bitrise/src/system_report.sh" "${DOCKERHUB_IMG_ID}:latest" bash /bitrise/src/system_report.sh
+            docker run --rm -v "$(pwd)/system_report.sh:/bitrise/src/system_report.sh" -v "/var/run/docker.sock:/var/run/docker.sock" "${DOCKERHUB_IMG_ID}:latest" bash /bitrise/src/system_report.sh
 
   deploy:
     before_run:
