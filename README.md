@@ -12,7 +12,8 @@ which is used to test & list the pre-installed tools.
 
 When a new version of this stack is available on [bitrise.io](https://www.bitrise.io)
 we'll run `system_report.sh` and post the result into
-the [bitrise.io GitHub repository](https://github.com/bitrise-io/bitrise.io), under the `system_reports` folder. The `system_report.sh` script can be run with `docker-compose` locally too,
+the [bitrise.io GitHub repository](https://github.com/bitrise-io/bitrise.io),
+under the `system_reports` folder. The `system_report.sh` script can be run with `docker-compose` locally too,
 with: `docker-compose run --rm app bash system_report.sh`.
 
 
