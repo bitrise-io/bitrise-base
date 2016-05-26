@@ -8,6 +8,9 @@ app:
   - DOCKER_LOGIN_EMAIL: $DOCKER_LOGIN_EMAIL
   - DOCKER_LOGIN_USER: $DOCKER_LOGIN_USER
   - DOCKER_LOGIN_PASS: $DOCKER_LOGIN_PASS
+  # on CI
+  - SLACK_WEBHOOK_URL: $SLACK_WEBHOOK_URL
+  - SLACK_CHANNEL: $SLACK_CHANNEL
 workflows:
   rebuild:
     steps:
@@ -47,6 +50,18 @@ workflows:
     before_run:
     - rebuild
     steps:
+    - slack@2.1.0:
+        run_if: .IsCI
+        inputs:
+        - webhook_url: $SLACK_WEBHOOK_URL
+        - channel: $SLACK_CHANNEL
+        - from_username: "$BITRISE_APP_TITLE - OK"
+        - from_username_on_error: "$BITRISE_APP_TITLE - ERROR"
+        - message: |-
+            Started:
+            
+            - Build URL: $BITRISE_BUILD_URL
+            - Build Number: $BITRISE_BUILD_NUMBER
     - script@1.1.0:
         title: docker login
         inputs:
@@ -88,3 +103,17 @@ workflows:
             fi
 
             docker_push_with_retry "${DOCKERHUB_IMG_ID}:latest"
+    - slack@2.1.0:
+        run_if: .IsCI
+        inputs:
+        - webhook_url: $SLACK_WEBHOOK_URL
+        - channel: $SLACK_CHANNEL
+        - from_username: "$BITRISE_APP_TITLE - OK"
+        - from_username_on_error: "$BITRISE_APP_TITLE - ERROR"
+        - message: |-
+            Finished:
+            
+            - Branch: *$BITRISE_GIT_BRANCH*
+            - Build URL: $BITRISE_BUILD_URL
+            - Build Number: $BITRISE_BUILD_NUMBER
+            - Build Message: $BITRISE_GIT_MESSAGE
