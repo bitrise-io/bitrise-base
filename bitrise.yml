@@ -114,6 +114,7 @@ workflows:
             Finished:
             
             - Branch: *$BITRISE_GIT_BRANCH*
+            - Tag: $BITRISE_GIT_TAG
             - Build URL: $BITRISE_BUILD_URL
             - Build Number: $BITRISE_BUILD_NUMBER
             - Build Message: $BITRISE_GIT_MESSAGE
