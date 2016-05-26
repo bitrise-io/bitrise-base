@@ -1,3 +1,11 @@
+## 2016_05_26_1
+
+* Based on `ubuntu:16.04`
+* `docker` : `1.11.1`
+* `docker-compose` : `1.7.1`
+* Ruby : `2.2.5`
+
+
 ## 2016_05_25_2
 
 * Fix in `bitrise.yml`, to be able to run `system_report.sh`, which needs access to `docker`

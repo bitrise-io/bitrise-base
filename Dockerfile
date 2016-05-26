@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 
 
 # ------------------------------------------------------
@@ -37,8 +37,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git mercurial curl wget rs
 # Common, useful
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install python
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install build-essential
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install unzip
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install zip
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install zip unzip
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install tree
 # For PPAs
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y software-properties-common
@@ -51,12 +50,12 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y software-properties-common
 #  from source: mainly because of GEM native extensions,
 #  this is the most reliable way to use Ruby no Ubuntu if GEM native extensions are required
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install build-essential zlib1g-dev libssl-dev libreadline6-dev libyaml-dev
-RUN wget -q http://cache.ruby-lang.org/pub/ruby/ruby-2.2.4.tar.gz
-RUN tar -xvzf ruby-2.2.4.tar.gz
-RUN cd ruby-2.2.4 && ./configure --prefix=/usr/local && make && make install
+RUN wget -q http://cache.ruby-lang.org/pub/ruby/ruby-2.2.5.tar.gz
+RUN tar -xvzf ruby-2.2.5.tar.gz
+RUN cd ruby-2.2.5 && ./configure --prefix=/usr/local && make && make install
 # cleanup
-RUN rm -rf ruby-2.2.4
-RUN rm ruby-2.2.4.tar.gz
+RUN rm -rf ruby-2.2.5
+RUN rm ruby-2.2.5.tar.gz
 
 RUN gem install bundler --no-document
 
@@ -79,19 +78,21 @@ RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 755 "$GOPATH"
 
 # Install docker
 #  as described at: https://docs.docker.com/engine/installation/ubuntulinux/
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y apt-transport-https
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y apt-transport-https ca-certificates
 RUN apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-# Ubuntu Trusty 14.04 (LTS)
-RUN echo 'deb https://apt.dockerproject.org/repo ubuntu-trusty main' > /etc/apt/sources.list.d/docker.list
+# Ubuntu Xenial 16.04 (LTS)
+RUN echo 'deb https://apt.dockerproject.org/repo ubuntu-xenial main' > /etc/apt/sources.list.d/docker.list
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq
 RUN DEBIAN_FRONTEND=noninteractive apt-get purge lxc-docker*
 RUN DEBIAN_FRONTEND=noninteractive apt-cache policy docker-engine
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y linux-image-extra-`uname -r`
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y docker-engine=1.10.3-0~trusty
+# For available docker-engine versions
+#  you can run `sudo apt-get update && sudo apt-cache policy docker-engine`
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y docker-engine=1.11.1-0~xenial
 
 
 # docker-compose
-RUN curl -fL https://github.com/docker/compose/releases/download/1.6.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+RUN curl -fL https://github.com/docker/compose/releases/download/1.7.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 RUN chmod +x /usr/local/bin/docker-compose
 RUN docker-compose --version
 
@@ -120,5 +121,5 @@ RUN apt-get clean
 
 WORKDIR $BITRISE_SOURCE_DIR
 
-ENV BITRISE_DOCKER_REV_NUMBER_BASE 2016_05_25_2
+ENV BITRISE_DOCKER_REV_NUMBER_BASE 2016_05_26_1
 CMD bitrise --version
