@@ -86,8 +86,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq
 RUN DEBIAN_FRONTEND=noninteractive apt-get purge lxc-docker*
 RUN DEBIAN_FRONTEND=noninteractive apt-cache policy docker-engine
 
-# RUN DEBIAN_FRONTEND=noninteractive apt-get install -y linux-image-extra-`uname -r`
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y linux-image-extra-4.4.0-22-generic
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y linux-image-extra-`uname -r`
 
 # For available docker-engine versions
 #  you can run `sudo apt-get update && sudo apt-cache policy docker-engine`
