@@ -1,3 +1,8 @@
+## 2016_05_28_1
+
+* Using `linux-image-extra-4.4.0-22-generic` for transition to Ubuntu 16.04
+
+
 ## 2016_05_27_1
 
 * Based on `ubuntu:16.04`
