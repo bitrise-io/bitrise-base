@@ -1,3 +1,9 @@
+## 2016_06_18_1
+
+* `bitrise` (CLI): `1.3.5`
+* Ruby: `2.3.1`
+
+
 ## 2016_05_28_1
 
 * Using `linux-image-extra-4.4.0-22-generic` for transition to Ubuntu 16.04
