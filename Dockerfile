@@ -116,6 +116,15 @@ RUN stepman update
 
 
 # ------------------------------------------------------
+# --- Env Config
+
+# Git config
+RUN git config --global user.email builds@bitrise.io
+RUN git config --global user.name "Bitrise Bot"
+COPY ./ssh/config /root/.ssh/config
+
+
+# ------------------------------------------------------
 # --- Cleanup, Workdir and revision
 
 # Cleaning
