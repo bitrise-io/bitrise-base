@@ -1,3 +1,8 @@
+## UPCOMING
+
+* CI specific `git` and SSH config, to make it easier to push back tags to repositories
+
+
 ## 2016_06_18_1
 
 * `bitrise` (CLI): `1.3.5`
