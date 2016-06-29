@@ -26,6 +26,7 @@ ver_line="$(python --version 2>&1 >/dev/null)" ;  echo "* Python: $ver_line"
 
 echo
 ver_line="$(git --version)" ;                     echo "* git: $ver_line"
+ver_line="$(git lfs version)" ;                   echo "* git lfs: $ver_line"
 ver_line="$(hg --version | grep version)" ;       echo "* mercurial/hg: $ver_line"
 ver_line="$(curl --version | grep curl)" ;        echo "* curl: $ver_line"
 ver_line="$(wget --version | grep 'GNU Wget')" ;  echo "* wget: $ver_line"

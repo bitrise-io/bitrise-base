@@ -116,12 +116,17 @@ RUN stepman update
 
 
 # ------------------------------------------------------
-# --- Env Config
+# --- Git config & LFS
 
 # Git config
 RUN git config --global user.email builds@bitrise.io
 RUN git config --global user.name "Bitrise Bot"
 COPY ./ssh/config /root/.ssh/config
+
+# Git LFS
+RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git-lfs
+RUN git lfs install
 
 
 # ------------------------------------------------------

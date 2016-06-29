@@ -1,6 +1,7 @@
 ## UPCOMING
 
 * CI specific `git` and SSH config, to make it easier to push back tags to repositories
+* [git-lfs](https://git-lfs.github.com/) pre-installed
 
 
 ## 2016_06_18_1
