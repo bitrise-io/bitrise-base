@@ -59,7 +59,7 @@ workflows:
         - from_username_on_error: "$BITRISE_APP_TITLE - ERROR"
         - message: |-
             Started:
-            
+
             - Build URL: $BITRISE_BUILD_URL
             - Build Number: $BITRISE_BUILD_NUMBER
     - script@1.1.0:
@@ -100,9 +100,9 @@ workflows:
                 exit 1
               fi
               docker_push_with_retry "${DOCKERHUB_IMG_ID}:${BITRISE_GIT_TAG}"
+            else
+              docker_push_with_retry "${DOCKERHUB_IMG_ID}:latest"
             fi
-
-            docker_push_with_retry "${DOCKERHUB_IMG_ID}:latest"
     - slack@2.1.0:
         run_if: .IsCI
         inputs:
@@ -112,7 +112,7 @@ workflows:
         - from_username_on_error: "$BITRISE_APP_TITLE - ERROR"
         - message: |-
             Finished:
-            
+
             - Branch: *$BITRISE_GIT_BRANCH*
             - Tag: $BITRISE_GIT_TAG
             - Build URL: $BITRISE_BUILD_URL
