@@ -115,6 +115,7 @@ workflows:
               exit 1
             fi
             docker_push_with_retry "${DOCKERHUB_IMG_ID}:${DOCKER_IMAGE_DEPLOY_TAG}"
+            docker_push_with_retry "${DOCKERHUB_IMG_ID}:latest"
     - slack@2.1.0:
         run_if: .IsCI
         inputs:
