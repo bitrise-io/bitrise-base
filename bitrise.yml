@@ -19,8 +19,7 @@ workflows:
         inputs:
         - content: |
             #!/bin/bash
-            set -e
-            set -x
+            set -ex
 
             docker images
             df -kh ./
@@ -30,8 +29,7 @@ workflows:
         inputs:
         - content: |
             #!/bin/bash
-            set -e
-            set -x
+            set -ex
 
             docker build --pull --no-cache -t "${DOCKERHUB_IMG_ID}:latest" .
 
@@ -41,8 +39,7 @@ workflows:
         inputs:
         - content: |
             #!/bin/bash
-            set -e
-            set -x
+            set -ex
 
             docker run --rm -v "$(pwd)/system_report.sh:/bitrise/src/system_report.sh" -v "/var/run/docker.sock:/var/run/docker.sock" "${DOCKERHUB_IMG_ID}:latest" bash /bitrise/src/system_report.sh
 
