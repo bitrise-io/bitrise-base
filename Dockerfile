@@ -76,6 +76,12 @@ ENV PATH $GOPATH/bin:$PATH
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 755 "$GOPATH"
 
 
+# Install NodeJS
+#  from official docs: https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
+RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+RUN sudo apt-get install -y nodejs
+
+
 # Install docker
 #  as described at: https://docs.docker.com/engine/installation/ubuntulinux/
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y apt-transport-https ca-certificates
@@ -137,5 +143,5 @@ RUN apt-get clean
 
 WORKDIR $BITRISE_SOURCE_DIR
 
-ENV BITRISE_DOCKER_REV_NUMBER_BASE v2016_07_14_1
+ENV BITRISE_DOCKER_REV_NUMBER_BASE v2016_07_15_1
 CMD bitrise --version

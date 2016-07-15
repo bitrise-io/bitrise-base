@@ -1,3 +1,8 @@
+## `v2016_07_15_1`
+
+* `Node.js` (`v6`) in now pre-installed
+
+
 ## `v2016_07_14_1`
 
 * `bitrise` (CLI): `1.3.6`
