@@ -50,7 +50,7 @@ workflows:
         - content: |
             #!/bin/bash
             set -ex
-            envman add --key 'DOCKER_IMAGE_DEPLOY_TAG' --value "$(date +%Y_%m_%d-%H_%M)"
+            envman add --key 'DOCKER_IMAGE_DEPLOY_TAG' --value "v$(date +%Y_%m_%d-%H_%M)"
 
   deploy:
     before_run:
