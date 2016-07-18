@@ -17,6 +17,34 @@ under the `system_reports` folder. The `system_report.sh` script can be run with
 with: `docker-compose run --rm app bash system_report.sh`.
 
 
+## Deployment and versions on [Docker Hub](https://hub.docker.com/)
+
+There are two images built from this repository:
+
+* [docker-bitrise-base-alpha](https://hub.docker.com/r/bitriseio/docker-bitrise-base-alpha/) - built every day, tagged automatically
+* [docker-bitrise-base](https://hub.docker.com/r/bitriseio/docker-bitrise-base/) - **"pinned"**, release version
+
+The "Alpha" images are built and tagged every day, automatically. These are tested regularly with various tests,
+but are **not production ready**.
+
+Once an "Alpha" is properly tested and declared as *production ready*, a "pinned" version is created
+and published. Pinned versions are considered production ready, and the "latest" pinned version
+is pre-cached on the [bitrise.io](https://www.bitrise.io/) Linux/Android Virtual Machines.
+
+This means that **if you want to build your own Docker image on top of this Docker image,
+you should build it on top of `bitriseio/docker-bitrise-base:latest`**, which is the
+latest tested, pinned, "production" version. Pinned versions are created and pre-cached weekly,
+usually on Saturday.
+
+> If you want to build your own Docker image on top of this image and you want to use it
+> on [bitrise.io](https://www.bitrise.io/), you should do that on top of `bitriseio/docker-bitrise-base:latest`,
+> __and make sure you add this image as a Linked Repository on Docker Hub__, or that you
+> rebuild your image on every weekend, once the pinned "latest" version is updated,
+> to benefit from the pre-cached image layers (**for quite a significant speed up!**).
+> Other versions / tags of the image are not pre-cached,
+> __only the most recent "latest" tagged version is pre-cached__ on [bitrise.io](https://www.bitrise.io/)!
+
+
 ## docker-compose template
 
 A `docker-compose.yml` is also included, configured for quick testing.

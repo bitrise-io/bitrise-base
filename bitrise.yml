@@ -3,15 +3,22 @@ format_version: 1.1.0
 default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 app:
   envs:
-  - DOCKERHUB_IMG_ID: bitriseio/docker-bitrise-base
+  - DOCKERHUB_IMG_ID_ALPHA: bitriseio/docker-bitrise-base-alpha
+  - DOCKERHUB_IMG_ID_PINNED: bitriseio/docker-bitrise-base
+  - DOCKER_FILE_PATH_ALPHA: ./Dockerfile
+  - DOCKER_FILE_PATH_PINNED: ./Dockerfile-pinned
+  #
+  - DOCKERHUB_IMG_ID: $DOCKERHUB_IMG_ID_ALPHA
+  - DOCKER_FILE_PATH: $DOCKER_FILE_PATH_ALPHA
   # define in .bitrise.secrets.yml
-  - DOCKER_LOGIN_EMAIL: $DOCKER_LOGIN_EMAIL
   - DOCKER_LOGIN_USER: $DOCKER_LOGIN_USER
   - DOCKER_LOGIN_PASS: $DOCKER_LOGIN_PASS
   # on CI
   - SLACK_WEBHOOK_URL: $SLACK_WEBHOOK_URL
   - SLACK_CHANNEL: $SLACK_CHANNEL
+
 workflows:
+
   rebuild:
     steps:
     - script@1.1.0:
@@ -31,7 +38,7 @@ workflows:
             #!/bin/bash
             set -ex
 
-            docker build --pull --no-cache -t "${DOCKERHUB_IMG_ID}:latest" .
+            docker build --pull --no-cache -t "${DOCKERHUB_IMG_ID}:latest" --file "$DOCKER_FILE_PATH" .
 
             docker images
     - script@1.1.0:
@@ -43,6 +50,17 @@ workflows:
 
             docker run --rm -v "$(pwd)/system_report.sh:/bitrise/src/system_report.sh" -v "/var/run/docker.sock:/var/run/docker.sock" "${DOCKERHUB_IMG_ID}:latest" bash /bitrise/src/system_report.sh
 
+  rebuild-pinned:
+    before_run:
+    - _pinned_envs
+    after_run:
+    - rebuild
+
+  _pinned_envs:
+    envs:
+    - DOCKERHUB_IMG_ID: $DOCKERHUB_IMG_ID_PINNED
+    - DOCKER_FILE_PATH: $DOCKER_FILE_PATH_PINNED
+
   _generate_image_deploy_tag:
     steps:
     - script:
@@ -50,12 +68,9 @@ workflows:
         - content: |
             #!/bin/bash
             set -ex
-            envman add --key 'DOCKER_IMAGE_DEPLOY_TAG' --value "v$(date +%Y_%m_%d-%H_%M)"
+            envman add --key 'DOCKER_IMAGE_DEPLOY_TAG' --value "v$(date +%Y_%m_%d-%H_%M)-b${BITRISE_BUILD_NUMBER}"
 
-  deploy:
-    before_run:
-    - rebuild
-    - _generate_image_deploy_tag
+  _slack_start:
     steps:
     - slack@2.1.0:
         run_if: .IsCI
@@ -69,7 +84,21 @@ workflows:
 
             - Build URL: $BITRISE_BUILD_URL
             - Build Number: $BITRISE_BUILD_NUMBER
+            - Image ID: $DOCKERHUB_IMG_ID
             - Image tag: $DOCKER_IMAGE_DEPLOY_TAG
+
+  deploy-pinned:
+    before_run:
+    - _pinned_envs
+    after_run:
+    - deploy
+
+  deploy:
+    before_run:
+    - _generate_image_deploy_tag
+    - _slack_start
+    - rebuild
+    steps:
     - script@1.1.0:
         title: docker login
         inputs:
@@ -77,7 +106,7 @@ workflows:
             #!/bin/bash
             set -e
             echo "=> Docker login..."
-            docker login -e "${DOCKER_LOGIN_EMAIL}" -u "${DOCKER_LOGIN_USER}" -p "${DOCKER_LOGIN_PASS}"
+            docker login -u "${DOCKER_LOGIN_USER}" -p "${DOCKER_LOGIN_PASS}"
     - script@1.1.0:
         title: docker push
         inputs:
@@ -125,6 +154,7 @@ workflows:
 
             - Branch: *$BITRISE_GIT_BRANCH*
             - Tag: $BITRISE_GIT_TAG
+            - Image ID: $DOCKERHUB_IMG_ID
             - Image tag: $DOCKER_IMAGE_DEPLOY_TAG
             - Build URL: $BITRISE_BUILD_URL
             - Build Number: $BITRISE_BUILD_NUMBER
