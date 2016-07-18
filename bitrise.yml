@@ -16,6 +16,8 @@ app:
   # on CI
   - SLACK_WEBHOOK_URL: $SLACK_WEBHOOK_URL
   - SLACK_CHANNEL: $SLACK_CHANNEL
+  # optional
+  - CONFIG_do_not_deploy_latest_tag: $CONFIG_do_not_deploy_latest_tag
 
 workflows:
 
@@ -141,7 +143,9 @@ workflows:
               exit 1
             fi
             docker_push_with_retry "${DOCKERHUB_IMG_ID}:${DOCKER_IMAGE_DEPLOY_TAG}"
-            docker_push_with_retry "${DOCKERHUB_IMG_ID}:latest"
+            if [[ "$CONFIG_do_not_deploy_latest_tag" != "true" ]] ; 
+              docker_push_with_retry "${DOCKERHUB_IMG_ID}:latest"
+            fi
     - slack@2.1.0:
         run_if: .IsCI
         inputs:
