@@ -21,7 +21,43 @@ app:
 
 workflows:
 
-  rebuild:
+  #
+  # Main workflows
+  #
+
+  # -- Rebuild / test
+
+  rebuild-pinned:
+    before_run:
+    - _pinned_envs
+    after_run:
+    - _rebuild
+
+  rebuild-alpha:
+    before_run:
+    - _alpha_envs
+    after_run:
+    - _rebuild
+
+  # -- Deploy
+
+  deploy-pinned:
+    before_run:
+    - _pinned_envs
+    after_run:
+    - _deploy
+
+  deploy-alpha:
+    before_run:
+    - _alpha_envs
+    after_run:
+    - _deploy
+
+  #
+  # Utility workflows
+  #
+
+  _rebuild:
     steps:
     - script@1.1.0:
         title: docker infos & images
@@ -52,16 +88,15 @@ workflows:
 
             docker run --rm -v "$(pwd)/system_report.sh:/bitrise/src/system_report.sh" -v "/var/run/docker.sock:/var/run/docker.sock" "${DOCKERHUB_IMG_ID}:latest" bash /bitrise/src/system_report.sh
 
-  rebuild-pinned:
-    before_run:
-    - _pinned_envs
-    after_run:
-    - rebuild
 
   _pinned_envs:
     envs:
     - DOCKERHUB_IMG_ID: $DOCKERHUB_IMG_ID_PINNED
     - DOCKER_FILE_PATH: $DOCKER_FILE_PATH_PINNED
+  _alpha_envs:
+    envs:
+    - DOCKERHUB_IMG_ID: $DOCKERHUB_IMG_ID_ALPHA
+    - DOCKER_FILE_PATH: $DOCKER_FILE_PATH_ALPHA
 
   _generate_image_deploy_tag:
     steps:
@@ -89,17 +124,11 @@ workflows:
             - Image ID: $DOCKERHUB_IMG_ID
             - Image tag: $DOCKER_IMAGE_DEPLOY_TAG
 
-  deploy-pinned:
-    before_run:
-    - _pinned_envs
-    after_run:
-    - deploy
-
-  deploy:
+  _deploy:
     before_run:
     - _generate_image_deploy_tag
     - _slack_start
-    - rebuild
+    - _rebuild
     steps:
     - script@1.1.0:
         title: docker login
