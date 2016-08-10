@@ -49,8 +49,8 @@ ver_line="$(docker-compose --version)" ;          echo "* docker-compose: $ver_l
 echo
 echo "--- Bitrise CLI tool versions"
 ver_line="$(bitrise --version)" ;                 echo "* bitrise: $ver_line"
-ver_line="$(stepman --version)" ;                 echo "* stepman: $ver_line"
-ver_line="$(envman --version)" ;                  echo "* envman: $ver_line"
+ver_line="$(/root/.bitrise/tools/stepman --version)" ; echo "* stepman: $ver_line"
+ver_line="$(/root/.bitrise/tools/envman --version)" ;  echo "* envman: $ver_line"
 echo "========================================"
 echo
 
