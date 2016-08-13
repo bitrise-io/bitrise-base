@@ -55,6 +55,12 @@ echo "========================================"
 echo
 
 echo
+echo "=== All Ruby GEMs ======================"
+gem list
+echo "========================================"
+echo
+
+echo
 echo "=== Linux info ========================="
 echo "* uname -a"
 uname -a
