@@ -89,7 +89,7 @@ workflows:
             docker run --rm \
               -v "$(pwd)/system_report.sh:/bitrise/src/system_report.sh" \
               -v "/var/run/docker.sock:/var/run/docker.sock" \
-              -v "/usr/local/bin/bitrise-bridge:/usr/local/bin/bitrise-bridge" \
+              -v "$(which bitrise-bridge):/usr/local/bin/bitrise-bridge" \
               "${DOCKERHUB_IMG_ID}:latest" bash /bitrise/src/system_report.sh
 
 
