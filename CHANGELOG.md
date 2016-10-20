@@ -1,3 +1,9 @@
+## next release
+
+* `Go`: 1.7.3
+* `docker-compose`: 1.8.1
+
+
 ## `v2016_10_14_1`
 
 * `bitrise` (CLI): `1.4.2`
