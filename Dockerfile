@@ -62,7 +62,7 @@ RUN gem install bundler --no-document
 
 # install Go
 #  from official binary package
-RUN wget -q https://storage.googleapis.com/golang/go1.7.1.linux-amd64.tar.gz -O go-bins.tar.gz
+RUN wget -q https://storage.googleapis.com/golang/go1.7.3.linux-amd64.tar.gz -O go-bins.tar.gz
 RUN tar -C /usr/local -xvzf go-bins.tar.gz
 RUN rm go-bins.tar.gz
 # ENV setup
@@ -100,7 +100,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y docker-engine=1.11.1-0~xen
 
 
 # docker-compose
-RUN curl -fL https://github.com/docker/compose/releases/download/1.7.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+RUN curl -fL https://github.com/docker/compose/releases/download/1.8.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 RUN chmod +x /usr/local/bin/docker-compose
 RUN docker-compose --version
 
