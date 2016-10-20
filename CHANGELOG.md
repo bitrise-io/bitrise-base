@@ -1,4 +1,4 @@
-## next release
+## `v2016_10_20_1`
 
 * `Go`: 1.7.3
 * `docker-compose`: 1.8.1
