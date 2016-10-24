@@ -110,7 +110,7 @@ RUN docker-compose --version
 
 #
 # Install Bitrise CLI
-RUN curl -fL https://github.com/bitrise-io/bitrise/releases/download/1.4.2/bitrise-$(uname -s)-$(uname -m) > /usr/local/bin/bitrise
+RUN curl -fL https://github.com/bitrise-io/bitrise/releases/download/1.4.3/bitrise-$(uname -s)-$(uname -m) > /usr/local/bin/bitrise
 RUN chmod +x /usr/local/bin/bitrise
 RUN bitrise setup
 RUN /root/.bitrise/tools/envman -version
@@ -150,5 +150,5 @@ RUN apt-get clean
 
 WORKDIR $BITRISE_SOURCE_DIR
 
-ENV BITRISE_DOCKER_REV_NUMBER_BASE v2016_10_20_1
+ENV BITRISE_DOCKER_REV_NUMBER_BASE v2016_10_24_1
 CMD bitrise --version
