@@ -110,7 +110,7 @@ RUN docker-compose --version
 
 #
 # Install Bitrise CLI
-RUN curl -fL https://github.com/bitrise-io/bitrise/releases/download/1.4.5/bitrise-$(uname -s)-$(uname -m) > /usr/local/bin/bitrise
+RUN curl -fL https://github.com/bitrise-io/bitrise/releases/download/1.5.1/bitrise-$(uname -s)-$(uname -m) > /usr/local/bin/bitrise
 RUN chmod +x /usr/local/bin/bitrise
 RUN bitrise setup
 RUN /root/.bitrise/tools/envman -version
