@@ -87,7 +87,8 @@ echo
 
 echo
 echo "=== System infos ======================="
-info_line="$( df -kh / | grep '/' )" ;            echo "* Free disk space: $info_line"
+info_line="$( df -kh / | grep '/' )" ;            echo "* Free disk space in /: $info_line"
+info_line="$( df -kh /bitrise | grep '/bitrise' )" ; echo "* Free disk space in /bitrise/: $info_line"
 echo "* Free RAM & swap:"
 free -mh
 echo "========================================"
