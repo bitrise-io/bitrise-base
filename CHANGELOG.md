@@ -1,3 +1,9 @@
+## `v2017_01_11_1`
+
+* `bitrise` (CLI): `1.5.2`
+* `Node.js`: upgrade from `v6` to `v7`
+
+
 ## `v2016_12_15_1`
 
 * `bitrise` (CLI): `1.5.1`
