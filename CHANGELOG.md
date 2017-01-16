@@ -1,3 +1,9 @@
+## WIP
+
+* `docker` upgrade from `1.11.1` to `1.12.6`
+* `docker-compose` upgrade from `1.8.1` to `1.9.0`
+
+
 ## `v2017_01_11_1`
 
 * `bitrise` (CLI): `1.5.2`
