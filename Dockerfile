@@ -96,7 +96,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y linux-image-extra-`uname -
 
 # For available docker-engine versions
 #  you can run `sudo apt-get update && sudo apt-cache policy docker-engine`
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y docker-engine=1.12.6-0~xenial
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y docker-engine=1.12.6-0~ubuntu-xenial
 
 
 # docker-compose
