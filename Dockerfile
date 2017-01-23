@@ -96,11 +96,11 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y linux-image-extra-`uname -
 
 # For available docker-engine versions
 #  you can run `sudo apt-get update && sudo apt-cache policy docker-engine`
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y docker-engine=1.11.1-0~xenial
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y docker-engine=1.12.6-0~ubuntu-xenial
 
 
 # docker-compose
-RUN curl -fL https://github.com/docker/compose/releases/download/1.8.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+RUN curl -fL https://github.com/docker/compose/releases/download/1.9.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 RUN chmod +x /usr/local/bin/docker-compose
 RUN docker-compose --version
 
