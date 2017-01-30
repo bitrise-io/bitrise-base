@@ -62,7 +62,7 @@ RUN gem install bundler --no-document
 
 # install Go
 #  from official binary package
-RUN wget -q https://storage.googleapis.com/golang/go1.7.4.linux-amd64.tar.gz -O go-bins.tar.gz
+RUN wget -q https://storage.googleapis.com/golang/go1.7.5.linux-amd64.tar.gz -O go-bins.tar.gz
 RUN tar -C /usr/local -xvzf go-bins.tar.gz
 RUN rm go-bins.tar.gz
 # ENV setup
