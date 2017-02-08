@@ -39,6 +39,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install python
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install build-essential
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install zip unzip
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install tree
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install imagemagick
 # For PPAs
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y software-properties-common
 
