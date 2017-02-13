@@ -83,6 +83,12 @@ RUN curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
 RUN sudo apt-get install -y nodejs
 
 
+# Install Yarn
+# as described at: https://yarnpkg.com/en/docs/install#linux-tab
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq && sudo apt-get install -y yarn
+
 # Install docker
 #  as described at: https://docs.docker.com/engine/installation/ubuntulinux/
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y apt-transport-https ca-certificates
