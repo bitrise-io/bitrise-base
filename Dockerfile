@@ -50,7 +50,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y software-properties-common
 # install Ruby from source
 #  from source: mainly because of GEM native extensions,
 #  this is the most reliable way to use Ruby no Ubuntu if GEM native extensions are required
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install build-essential zlib1g-dev libssl-dev libreadline6-dev libyaml-dev
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install build-essential zlib1g-dev libssl-dev libreadline6-dev libyaml-dev libsqlite3-dev
 RUN wget -q http://cache.ruby-lang.org/pub/ruby/ruby-2.3.3.tar.gz
 RUN tar -xvzf ruby-2.3.3.tar.gz
 RUN cd ruby-2.3.3 && ./configure --prefix=/usr/local && make && make install
@@ -130,6 +130,10 @@ RUN /root/.bitrise/tools/stepman update
 
 COPY ./ssh/config /root/.ssh/config
 
+# ------------------------------------------------------
+# --- Update Rubygems
+
+RUN gem update --system --no-document
 
 # ------------------------------------------------------
 # --- Git config
