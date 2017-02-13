@@ -90,20 +90,17 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/so
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq && sudo apt-get install -y yarn
 
 # Install docker
-#  as described at: https://docs.docker.com/engine/installation/ubuntulinux/
+#  as described at: https://docs.docker.com/engine/installation/linux/ubuntu
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y apt-transport-https ca-certificates
-RUN apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-# Ubuntu Xenial 16.04 (LTS)
-RUN echo 'deb https://apt.dockerproject.org/repo ubuntu-xenial main' > /etc/apt/sources.list.d/docker.list
+RUN curl -fsSL https://apt.dockerproject.org/gpg | sudo apt-key add -
+RUN apt-key fingerprint 58118E89F3A912897C070ADBF76221572C52609D
+RUN sudo add-apt-repository "deb https://apt.dockerproject.org/repo/ ubuntu-$(lsb_release -cs) main"
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq
-RUN DEBIAN_FRONTEND=noninteractive apt-get purge lxc-docker*
 RUN DEBIAN_FRONTEND=noninteractive apt-cache policy docker-engine
-
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y linux-image-extra-`uname -r`
 
 # For available docker-engine versions
 #  you can run `sudo apt-get update && sudo apt-cache policy docker-engine`
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y docker-engine=1.12.6-0~ubuntu-xenial
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y docker-engine=1.12.6-0~ubuntu-$(lsb_release -cs)
 
 
 # docker-compose
