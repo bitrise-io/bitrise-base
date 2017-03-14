@@ -114,15 +114,15 @@ RUN docker-compose --version
 
 #
 # Install Bitrise CLI
-RUN curl -fL https://github.com/bitrise-io/bitrise/releases/download/1.5.4/bitrise-$(uname -s)-$(uname -m) > /usr/local/bin/bitrise
+RUN curl -fL https://github.com/bitrise-io/bitrise/releases/download/1.5.5/bitrise-$(uname -s)-$(uname -m) > /usr/local/bin/bitrise
 RUN chmod +x /usr/local/bin/bitrise
 RUN bitrise setup
-RUN /root/.bitrise/tools/envman -version
-RUN /root/.bitrise/tools/stepman -version
+RUN bitrise envman -version
+RUN bitrise stepman -version
 # setup the default StepLib collection to stepman, for a pre-warmed
 #  cache for the StepLib
-RUN /root/.bitrise/tools/stepman setup -c https://github.com/bitrise-io/bitrise-steplib.git
-RUN /root/.bitrise/tools/stepman update
+RUN bitrise stepman setup -c https://github.com/bitrise-io/bitrise-steplib.git
+RUN bitrise stepman update
 
 
 # ------------------------------------------------------
@@ -158,5 +158,5 @@ RUN apt-get clean
 
 WORKDIR $BITRISE_SOURCE_DIR
 
-ENV BITRISE_DOCKER_REV_NUMBER_BASE v2017_02_14_1
+ENV BITRISE_DOCKER_REV_NUMBER_BASE v2017_03_14_1
 CMD bitrise --version
