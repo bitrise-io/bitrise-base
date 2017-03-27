@@ -90,21 +90,20 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/so
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq && sudo apt-get install -y yarn
 
 # Install docker
-#  as described at: https://docs.docker.com/engine/installation/linux/ubuntu
+#  as described at: https://docs.docker.com/engine/installation/linux/ubuntu/
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y apt-transport-https ca-certificates
-RUN curl -fsSL https://apt.dockerproject.org/gpg | sudo apt-key add -
-RUN apt-key fingerprint 58118E89F3A912897C070ADBF76221572C52609D
-RUN sudo add-apt-repository "deb https://apt.dockerproject.org/repo/ ubuntu-$(lsb_release -cs) main"
+RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+RUN sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq
-RUN DEBIAN_FRONTEND=noninteractive apt-cache policy docker-engine
+RUN DEBIAN_FRONTEND=noninteractive apt-cache policy docker-ce
 
-# For available docker-engine versions
-#  you can run `sudo apt-get update && sudo apt-cache policy docker-engine`
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y docker-engine=1.12.6-0~ubuntu-$(lsb_release -cs)
+# For available docker-ce versions
+#  you can run `sudo apt-get update && sudo apt-cache policy docker-ce`
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y docker-ce=17.03.0~ce-0~ubuntu-$(lsb_release -cs)
 
 
 # docker-compose
-RUN curl -fL https://github.com/docker/compose/releases/download/1.9.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+RUN curl -fL https://github.com/docker/compose/releases/download/1.11.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 RUN chmod +x /usr/local/bin/docker-compose
 RUN docker-compose --version
 

@@ -1,3 +1,9 @@
+## UPCOMING
+
+* `docker`: `17.03 CE`
+* `docker-compose`: `1.11.2`
+
+
 ## `v2017_03_14_1`
 
 * `bitrise` (CLI): `1.5.5`
