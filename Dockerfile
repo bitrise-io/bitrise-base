@@ -99,7 +99,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-cache policy docker-ce
 
 # For available docker-ce versions
 #  you can run `sudo apt-get update && sudo apt-cache policy docker-ce`
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y docker-ce=17.03.0~ce-0~ubuntu-$(lsb_release -cs)
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y docker-ce=17.03.1~ce-0~ubuntu-$(lsb_release -cs)
 
 
 # docker-compose
