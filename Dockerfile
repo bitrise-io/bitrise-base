@@ -26,12 +26,13 @@ ENV TOOL_VER_DOCKER "17.03.1"
 ENV TOOL_VER_DOCKER_COMPOSE "1.11.2"
 
 # create base dirs
-RUN mkdir -p /bitrise/src
-RUN mkdir -p /bitrise/deploy
-RUN mkdir -p /bitrise/cache
-
+RUN mkdir -p /bitrise/src \
+ && mkdir -p /bitrise/deploy \
+ && mkdir -p /bitrise/cache \
 # prep dir
-RUN mkdir -p /bitrise/prep
+ && mkdir -p /bitrise/prep
+
+# switch to temp/prep workdir, for the duration of the provisioning
 WORKDIR /bitrise/prep
 
 
