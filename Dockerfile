@@ -49,8 +49,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
  && locale-gen en_US.UTF-8
 
 
-# Requiered for Bitrise CLI
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
+# Requiered for Bitrise CLI
     git \
     mercurial \
     curl \
@@ -75,7 +75,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
 
 # install Ruby from source
 #  from source: mainly because of GEM native extensions,
-#  this is the most reliable way to use Ruby no Ubuntu if GEM native extensions are required
+#  this is the most reliable way to use Ruby on Ubuntu if GEM native extensions are required
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
     build-essential \
     zlib1g-dev \
@@ -106,7 +106,7 @@ RUN wget -q https://storage.googleapis.com/golang/go${TOOL_VER_GO}.linux-amd64.t
 ENV PATH $PATH:/usr/local/go/bin
 # Go Workspace dirs & envs
 # From the official Golang Dockerfile
-#  https://raw.githubusercontent.com/docker-library/golang/master/1.5/Dockerfile
+#  https://github.com/docker-library/golang
 ENV GOPATH /go
 ENV PATH $GOPATH/bin:$PATH
 # 755 because Ruby complains if 777 (warning: Insecure world writable dir ... in PATH)
@@ -124,6 +124,7 @@ RUN sudo apt-get install -y nodejs
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq && sudo apt-get install -y yarn
+
 
 # Install docker
 #  as described at: https://docs.docker.com/engine/installation/linux/ubuntu/
