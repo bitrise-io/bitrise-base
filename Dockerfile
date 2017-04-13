@@ -187,9 +187,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git-lfs \
 # ------------------------------------------------------
 # --- Cleanup, Workdir and revision
 
-# Cleaning
-RUN apt-get clean
-
 WORKDIR $BITRISE_SOURCE_DIR
 
 ENV BITRISE_DOCKER_REV_NUMBER_BASE v2017_04_12_1
