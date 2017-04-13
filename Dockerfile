@@ -17,6 +17,7 @@ ENV BITRISE_SOURCE_DIR "/bitrise/src"
 ENV BITRISE_BRIDGE_WORKDIR "/bitrise/src"
 ENV BITRISE_DEPLOY_DIR "/bitrise/deploy"
 ENV BITRISE_CACHE_DIR "/bitrise/cache"
+ENV BITRISE_PREP_DIR "/bitrise/prep"
 
 # Configs - tool versions
 ENV TOOL_VER_BITRISE_CLI "1.5.6"
@@ -30,10 +31,10 @@ RUN mkdir -p /bitrise/src \
  && mkdir -p /bitrise/deploy \
  && mkdir -p /bitrise/cache \
 # prep dir
- && mkdir -p /bitrise/prep
+ && mkdir -p ${BITRISE_PREP_DIR}
 
 # switch to temp/prep workdir, for the duration of the provisioning
-WORKDIR /bitrise/prep
+WORKDIR ${BITRISE_PREP_DIR}
 
 
 # ------------------------------------------------------
@@ -75,15 +76,25 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
 # install Ruby from source
 #  from source: mainly because of GEM native extensions,
 #  this is the most reliable way to use Ruby no Ubuntu if GEM native extensions are required
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install build-essential zlib1g-dev libssl-dev libreadline6-dev libyaml-dev libsqlite3-dev
-RUN wget -q http://cache.ruby-lang.org/pub/ruby/ruby-${TOOL_VER_RUBY}.tar.gz
-RUN tar -xvzf ruby-${TOOL_VER_RUBY}.tar.gz
-RUN cd ruby-${TOOL_VER_RUBY} && ./configure --prefix=/usr/local && make && make install
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
+    build-essential \
+    zlib1g-dev \
+    libssl-dev \
+    libreadline6-dev \
+    libyaml-dev \
+    libsqlite3-dev \
+ && cd ${BITRISE_PREP_DIR} \
+ && wget -q http://cache.ruby-lang.org/pub/ruby/ruby-${TOOL_VER_RUBY}.tar.gz \
+ && tar -xvzf ruby-${TOOL_VER_RUBY}.tar.gz \
+ && cd ruby-${TOOL_VER_RUBY} \
+ && ./configure --prefix=/usr/local && make && make install \
 # cleanup
-RUN rm -rf ruby-${TOOL_VER_RUBY}
-RUN rm ruby-${TOOL_VER_RUBY}.tar.gz
-
-RUN gem install bundler --no-document
+ && cd ${BITRISE_PREP_DIR} \
+ && rm -rf ruby-${TOOL_VER_RUBY} \
+ && rm ruby-${TOOL_VER_RUBY}.tar.gz \
+# gem install bundler & rubygem update
+ && gem install bundler --no-document \
+ && gem update --system --no-document
 
 
 # install Go
@@ -153,11 +164,6 @@ RUN bitrise stepman update
 # --- SSH config
 
 COPY ./ssh/config /root/.ssh/config
-
-# ------------------------------------------------------
-# --- Update Rubygems
-
-RUN gem update --system --no-document
 
 # ------------------------------------------------------
 # --- Git config
