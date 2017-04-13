@@ -127,21 +127,25 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq && sudo apt-get install -y
 
 # Install docker
 #  as described at: https://docs.docker.com/engine/installation/linux/ubuntu/
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y apt-transport-https ca-certificates
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    apt-transport-https \
+    ca-certificates
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-RUN sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq
-RUN DEBIAN_FRONTEND=noninteractive apt-cache policy docker-ce
-
+RUN sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
+ && DEBIAN_FRONTEND=noninteractive apt-get update -qq \
+ && DEBIAN_FRONTEND=noninteractive apt-cache policy docker-ce \
 # For available docker-ce versions
 #  you can run `sudo apt-get update && sudo apt-cache policy docker-ce`
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y docker-ce=${TOOL_VER_DOCKER}~ce-0~ubuntu-$(lsb_release -cs)
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    docker-ce=${TOOL_VER_DOCKER}~ce-0~ubuntu-$(lsb_release -cs) \
+# just a quick test
+ && docker version
 
 
 # docker-compose
-RUN curl -fL https://github.com/docker/compose/releases/download/${TOOL_VER_DOCKER_COMPOSE}/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
-RUN chmod +x /usr/local/bin/docker-compose
-RUN docker-compose --version
+RUN wget -q https://github.com/docker/compose/releases/download/${TOOL_VER_DOCKER_COMPOSE}/docker-compose-`uname -s`-`uname -m` -O /usr/local/bin/docker-compose \
+ && chmod +x /usr/local/bin/docker-compose \
+ && docker-compose --version
 
 
 # ------------------------------------------------------
