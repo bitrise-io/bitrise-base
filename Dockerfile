@@ -31,6 +31,11 @@ WORKDIR /bitrise/prep
 # ------------------------------------------------------
 # --- Base pre-installed tools
 RUN apt-get update -qq
+# For locale gen
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y locales
+# Do Locale gen
+RUN locale-gen en_US.UTF-8
+
 # Requiered for Bitrise CLI
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git mercurial curl wget rsync sudo expect
 # Common, useful
@@ -41,11 +46,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install tree
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install imagemagick
 # For PPAs
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y software-properties-common
-# For locale gen
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y locales
 
-# Do Locale gen
-RUN locale-gen en_US.UTF-8
 
 
 # ------------------------------------------------------
