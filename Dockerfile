@@ -18,6 +18,13 @@ ENV BITRISE_BRIDGE_WORKDIR "/bitrise/src"
 ENV BITRISE_DEPLOY_DIR "/bitrise/deploy"
 ENV BITRISE_CACHE_DIR "/bitrise/cache"
 
+# Configs - tool versions
+ENV TOOL_VER_BITRISE_CLI "1.5.6"
+ENV TOOL_VER_RUBY "2.4.1"
+ENV TOOL_VER_GO "1.8.1"
+ENV TOOL_VER_DOCKER "17.03.1"
+ENV TOOL_VER_DOCKER_COMPOSE "1.11.2"
+
 # create base dirs
 RUN mkdir -p /bitrise/src
 RUN mkdir -p /bitrise/deploy
@@ -56,19 +63,19 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y software-properties-common
 #  from source: mainly because of GEM native extensions,
 #  this is the most reliable way to use Ruby no Ubuntu if GEM native extensions are required
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install build-essential zlib1g-dev libssl-dev libreadline6-dev libyaml-dev libsqlite3-dev
-RUN wget -q http://cache.ruby-lang.org/pub/ruby/ruby-2.3.3.tar.gz
-RUN tar -xvzf ruby-2.3.3.tar.gz
-RUN cd ruby-2.3.3 && ./configure --prefix=/usr/local && make && make install
+RUN wget -q http://cache.ruby-lang.org/pub/ruby/ruby-${TOOL_VER_RUBY}.tar.gz
+RUN tar -xvzf ruby-${TOOL_VER_RUBY}.tar.gz
+RUN cd ruby-${TOOL_VER_RUBY} && ./configure --prefix=/usr/local && make && make install
 # cleanup
-RUN rm -rf ruby-2.3.3
-RUN rm ruby-2.3.3.tar.gz
+RUN rm -rf ruby-${TOOL_VER_RUBY}
+RUN rm ruby-${TOOL_VER_RUBY}.tar.gz
 
 RUN gem install bundler --no-document
 
 
 # install Go
 #  from official binary package
-RUN wget -q https://storage.googleapis.com/golang/go1.8.linux-amd64.tar.gz -O go-bins.tar.gz
+RUN wget -q https://storage.googleapis.com/golang/go${TOOL_VER_GO}.linux-amd64.tar.gz -O go-bins.tar.gz
 RUN tar -C /usr/local -xvzf go-bins.tar.gz
 RUN rm go-bins.tar.gz
 # ENV setup
@@ -104,11 +111,11 @@ RUN DEBIAN_FRONTEND=noninteractive apt-cache policy docker-ce
 
 # For available docker-ce versions
 #  you can run `sudo apt-get update && sudo apt-cache policy docker-ce`
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y docker-ce=17.03.1~ce-0~ubuntu-$(lsb_release -cs)
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y docker-ce=${TOOL_VER_DOCKER}~ce-0~ubuntu-$(lsb_release -cs)
 
 
 # docker-compose
-RUN curl -fL https://github.com/docker/compose/releases/download/1.11.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+RUN curl -fL https://github.com/docker/compose/releases/download/${TOOL_VER_DOCKER_COMPOSE}/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 RUN chmod +x /usr/local/bin/docker-compose
 RUN docker-compose --version
 
@@ -118,7 +125,7 @@ RUN docker-compose --version
 
 #
 # Install Bitrise CLI
-RUN curl -fL https://github.com/bitrise-io/bitrise/releases/download/1.5.6/bitrise-$(uname -s)-$(uname -m) > /usr/local/bin/bitrise
+RUN curl -fL https://github.com/bitrise-io/bitrise/releases/download/${TOOL_VER_BITRISE_CLI}/bitrise-$(uname -s)-$(uname -m) > /usr/local/bin/bitrise
 RUN chmod +x /usr/local/bin/bitrise
 RUN bitrise setup
 RUN bitrise envman -version
