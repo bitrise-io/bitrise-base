@@ -99,9 +99,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
 
 # install Go
 #  from official binary package
-RUN wget -q https://storage.googleapis.com/golang/go${TOOL_VER_GO}.linux-amd64.tar.gz -O go-bins.tar.gz
-RUN tar -C /usr/local -xvzf go-bins.tar.gz
-RUN rm go-bins.tar.gz
+RUN wget -q https://storage.googleapis.com/golang/go${TOOL_VER_GO}.linux-amd64.tar.gz -O go-bins.tar.gz \
+ && tar -C /usr/local -xvzf go-bins.tar.gz \
+ && rm go-bins.tar.gz
 # ENV setup
 ENV PATH $PATH:/usr/local/go/bin
 # Go Workspace dirs & envs
