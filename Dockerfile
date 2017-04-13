@@ -6,7 +6,6 @@ FROM ubuntu:16.04
 
 # Environments
 # - Language
-RUN locale-gen en_US.UTF-8
 ENV LANG "en_US.UTF-8"
 ENV LANGUAGE "en_US.UTF-8"
 ENV LC_ALL "en_US.UTF-8"
@@ -32,6 +31,11 @@ WORKDIR /bitrise/prep
 # ------------------------------------------------------
 # --- Base pre-installed tools
 RUN apt-get update -qq
+# For locale gen
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y locales
+# Do Locale gen
+RUN locale-gen en_US.UTF-8
+
 # Requiered for Bitrise CLI
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git mercurial curl wget rsync sudo expect
 # Common, useful
@@ -42,6 +46,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install tree
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install imagemagick
 # For PPAs
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y software-properties-common
+
 
 
 # ------------------------------------------------------
