@@ -6,25 +6,25 @@ FROM ubuntu:16.04
 
 # Environments
 # - Language
-ENV LANG "en_US.UTF-8"
-ENV LANGUAGE "en_US.UTF-8"
-ENV LC_ALL "en_US.UTF-8"
+ENV LANG="en_US.UTF-8" \
+    LANGUAGE="en_US.UTF-8" \
+    LC_ALL="en_US.UTF-8" \
 # - CI
-ENV CI "true"
-ENV BITRISE_IO "true"
+    CI="true" \
+    BITRISE_IO="true" \
 # - main dirs
-ENV BITRISE_SOURCE_DIR "/bitrise/src"
-ENV BITRISE_BRIDGE_WORKDIR "/bitrise/src"
-ENV BITRISE_DEPLOY_DIR "/bitrise/deploy"
-ENV BITRISE_CACHE_DIR "/bitrise/cache"
-ENV BITRISE_PREP_DIR "/bitrise/prep"
+    BITRISE_SOURCE_DIR="/bitrise/src" \
+    BITRISE_BRIDGE_WORKDIR="/bitrise/src" \
+    BITRISE_DEPLOY_DIR="/bitrise/deploy" \
+    BITRISE_CACHE_DIR="/bitrise/cache" \
+    BITRISE_PREP_DIR="/bitrise/prep" \
 
 # Configs - tool versions
-ENV TOOL_VER_BITRISE_CLI "1.5.6"
-ENV TOOL_VER_RUBY "2.4.1"
-ENV TOOL_VER_GO "1.8.1"
-ENV TOOL_VER_DOCKER "17.03.1"
-ENV TOOL_VER_DOCKER_COMPOSE "1.11.2"
+    TOOL_VER_BITRISE_CLI="1.5.6" \
+    TOOL_VER_RUBY="2.4.1" \
+    TOOL_VER_GO="1.8.1" \
+    TOOL_VER_DOCKER="17.03.1" \
+    TOOL_VER_DOCKER_COMPOSE="1.11.2"
 
 # create base dirs
 RUN mkdir -p /bitrise/src \
