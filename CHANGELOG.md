@@ -1,7 +1,11 @@
 ## UPCOMING
 
+
+## `v2017_04_13_1`
+
 * `Go`: `1.8.1`
 * `Ruby`: `2.4.1`
+* Lots of Dockerfile optimization
 
 
 ## `v2017_04_12_1`
