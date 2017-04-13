@@ -172,8 +172,8 @@ COPY ./ssh/config /root/.ssh/config
 # ------------------------------------------------------
 # --- Git config
 
-RUN git config --global user.email builds@bitrise.io
-RUN git config --global user.name "Bitrise Bot"
+RUN git config --global user.email builds@bitrise.io \
+ && git config --global user.name "Bitrise Bot"
 
 
 # ------------------------------------------------------
