@@ -180,8 +180,8 @@ RUN git config --global user.email builds@bitrise.io \
 # --- Git LFS
 
 RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git-lfs
-RUN git lfs install
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git-lfs \
+ && git lfs install
 
 
 # ------------------------------------------------------
