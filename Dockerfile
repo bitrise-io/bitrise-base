@@ -23,8 +23,8 @@ ENV LANG="en_US.UTF-8" \
     TOOL_VER_BITRISE_CLI="1.6.1" \
     TOOL_VER_RUBY="2.4.1" \
     TOOL_VER_GO="1.8.1" \
-    TOOL_VER_DOCKER="17.03.1" \
-    TOOL_VER_DOCKER_COMPOSE="1.11.2"
+    TOOL_VER_DOCKER="17.05.0" \
+    TOOL_VER_DOCKER_COMPOSE="1.13.0"
 
 # create base dirs
 RUN mkdir -p /bitrise/src \
