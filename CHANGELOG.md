@@ -1,5 +1,8 @@
 ## UPCOMING
 
+* `docker`: `17.05.0 CE`
+* `docker-compose`: `1.13.0`
+
 
 ## `v2017_05_11_1`
 
