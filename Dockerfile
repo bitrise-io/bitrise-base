@@ -28,9 +28,10 @@ ENV LANG="en_US.UTF-8" \
     TOOL_VER_DOCKER_COMPOSE="1.11.2"
 
 # create base dirs
-RUN mkdir -p /bitrise/src \
- && mkdir -p /bitrise/deploy \
- && mkdir -p /bitrise/cache \
+RUN mkdir -p ${BITRISE_SOURCE_DIR} \
+ && mkdir -p ${BITRISE_DEPLOY_DIR} \
+ && mkdir -p ${BITRISE_CACHE_DIR} \
+ && mkdir -p ${BITRISE_TMP_DIR} \
 # prep dir
  && mkdir -p ${BITRISE_PREP_DIR}
 
