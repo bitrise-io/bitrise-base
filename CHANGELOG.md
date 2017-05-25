@@ -1,6 +1,11 @@
 ## UPCOMING
 
 
+## `v2017_05_25_1`
+
+* `BITRISE_TMP_DIR` env var set and related dir (`/bitrise/tmp`) created
+
+
 ## `v2017_05_11_1`
 
 * `bitrise` (CLI): `1.6.1`
