@@ -62,3 +62,27 @@ with the container.
 Every time you change your `Dockerfile` you'll have to run `docker-compose build` again,
 so your next `docker-compose run` will run in the environment you specify in
 the `Dockerfile`.
+
+
+## Maintainer / Service Developer Notes
+
+### Docker shared folders
+
+If you want to use shared folders with this Docker image, to let e.g. a build to use `docker` from
+the container, you should mount a shared folder into `/bitrise/`, and should include the following dirs
+in that shared folder:
+
+- /bitrise/src
+- /bitrise/deploy
+- /bitrise/cache
+- /bitrise/prep
+- /bitrise/tmp
+
+For maximum compatibility you should share `/bitrise` from the host to `/bitrise` in the container.
+
+Also worth to mention that doing this **will improve the performance** of file moves between these dirs,
+if the whole `/bitrise` dir is shared as a single shared folder.
+Due to how docker handles shared folders right now, if you move files between shared and non shared dirs
+it'll have to do a full file copy,
+while if you move files inside a shared dir (`/bitrise` in this case)
+that will be a simple rename, no file copy required.
