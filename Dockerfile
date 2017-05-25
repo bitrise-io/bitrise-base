@@ -18,6 +18,7 @@ ENV LANG="en_US.UTF-8" \
     BITRISE_DEPLOY_DIR="/bitrise/deploy" \
     BITRISE_CACHE_DIR="/bitrise/cache" \
     BITRISE_PREP_DIR="/bitrise/prep" \
+    BITRISE_TMP_DIR="/bitrise/tmp"
 
 # Configs - tool versions
     TOOL_VER_BITRISE_CLI="1.6.1" \
