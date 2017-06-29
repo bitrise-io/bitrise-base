@@ -1,5 +1,9 @@
 ## UPCOMING
 
+## `v2017_06_29_1`
+
+* NodeJS upgrade from v7 to v8
+
 
 ## `v2017_06_13_1`
 
