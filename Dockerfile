@@ -62,6 +62,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
     expect \
 # Common, useful
     python \
+    python-dev \
+    python-pip \
     build-essential \
     zip \
     unzip \
@@ -85,9 +87,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
     libreadline6-dev \
     libyaml-dev \
     libsqlite3-dev \
-# Python
-    python-dev \
-    python-pip \
  && cd ${BITRISE_PREP_DIR} \
  && wget -q http://cache.ruby-lang.org/pub/ruby/ruby-${TOOL_VER_RUBY}.tar.gz \
  && tar -xvzf ruby-${TOOL_VER_RUBY}.tar.gz \
