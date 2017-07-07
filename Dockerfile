@@ -128,6 +128,12 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/so
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq && sudo apt-get install -y yarn
 
 
+# Install Pip
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    python-dev \
+    python-pip
+
+
 # Install docker
 #  as described at: https://docs.docker.com/engine/installation/linux/ubuntu/
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
