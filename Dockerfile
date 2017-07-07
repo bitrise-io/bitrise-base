@@ -85,6 +85,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
     libreadline6-dev \
     libyaml-dev \
     libsqlite3-dev \
+# Python
+    python-dev \
+    python-pip \
  && cd ${BITRISE_PREP_DIR} \
  && wget -q http://cache.ruby-lang.org/pub/ruby/ruby-${TOOL_VER_RUBY}.tar.gz \
  && tar -xvzf ruby-${TOOL_VER_RUBY}.tar.gz \
@@ -126,12 +129,6 @@ RUN sudo apt-get install -y nodejs
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq && sudo apt-get install -y yarn
-
-
-# Install Pip
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    python-dev \
-    python-pip
 
 
 # Install docker
