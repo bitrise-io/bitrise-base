@@ -60,10 +60,11 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
     rsync \
     sudo \
     expect \
-# Common, useful
+# Python
     python \
     python-dev \
     python-pip \
+# Common, useful
     build-essential \
     zip \
     unzip \
