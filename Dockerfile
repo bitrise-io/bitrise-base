@@ -62,6 +62,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
     expect \
 # Common, useful
     python \
+    python-dev \
+    python-pip \
     build-essential \
     zip \
     unzip \
