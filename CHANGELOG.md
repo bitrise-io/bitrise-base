@@ -1,5 +1,10 @@
 ## UPCOMING
 
+## `v2017_07_11_1`
+
+* `bitrise` (CLI): `1.7.0`
+
+
 ## `v2017_06_29_1`
 
 * NodeJS upgrade from v7 to v8
