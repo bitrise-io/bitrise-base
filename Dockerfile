@@ -88,15 +88,15 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
     libreadline6-dev \
     libyaml-dev \
     libsqlite3-dev \
- && cd ${BITRISE_PREP_DIR} \
+ && mkdir -p /tmp/ruby-inst
+ && cd /tmp/ruby-inst \
  && wget -q http://cache.ruby-lang.org/pub/ruby/ruby-${TOOL_VER_RUBY}.tar.gz \
  && tar -xvzf ruby-${TOOL_VER_RUBY}.tar.gz \
  && cd ruby-${TOOL_VER_RUBY} \
  && ./configure --prefix=/usr/local && make && make install \
 # cleanup
- && cd ${BITRISE_PREP_DIR} \
- && rm -rf ruby-${TOOL_VER_RUBY} \
- && rm ruby-${TOOL_VER_RUBY}.tar.gz \
+ && cd / \
+ && rm -rf /tmp/ruby-inst \
 # gem install bundler & rubygem update
  && gem install bundler --no-document \
  && gem update --system --no-document
