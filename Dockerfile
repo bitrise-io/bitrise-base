@@ -88,7 +88,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
     libreadline6-dev \
     libyaml-dev \
     libsqlite3-dev \
- && mkdir -p /tmp/ruby-inst
+ && mkdir -p /tmp/ruby-inst \
  && cd /tmp/ruby-inst \
  && wget -q http://cache.ruby-lang.org/pub/ruby/ruby-${TOOL_VER_RUBY}.tar.gz \
  && tar -xvzf ruby-${TOOL_VER_RUBY}.tar.gz \
