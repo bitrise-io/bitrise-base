@@ -68,6 +68,7 @@ ver_line="$(zip -v | head -n 2 | tail -n 1)";     echo "* zip: $ver_line"
 ver_line="$(tar --version | head -n 1)" ;         echo "* tar: $ver_line"
 ver_line="$(tree --version)" ;                    echo "* tree: $ver_line"
 ver_line="$(gcc --version | head -n 1)" ;         echo "* gcc: $ver_line"
+ver_line="$(clang --version | head -n 1)" ;       echo "* clang: $ver_line"
 ver_line="$(convert --version | head -1)" ;       echo "* imagemagick (convert): $ver_line"
 
 echo

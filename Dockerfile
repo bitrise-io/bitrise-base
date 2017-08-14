@@ -69,6 +69,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
     zip \
     unzip \
     tree \
+    clang \
     imagemagick \
 # For PPAs
     software-properties-common
@@ -193,5 +194,5 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git-lfs \
 
 WORKDIR $BITRISE_SOURCE_DIR
 
-ENV BITRISE_DOCKER_REV_NUMBER_BASE v2017_08_08_1
+ENV BITRISE_DOCKER_REV_NUMBER_BASE v2017_08_14_1
 CMD bitrise --version
