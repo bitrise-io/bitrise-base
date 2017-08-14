@@ -1,5 +1,9 @@
 ## UPCOMING
 
+# `v2017_08_14_1`
+
+* `clang` is now pre-installed
+
 ## `v2017_08_08_1`
 
 * `bitrise` (CLI): `1.8.0`
