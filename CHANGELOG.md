@@ -1,8 +1,14 @@
 ## UPCOMING
 
-# `v2017_08_14_1`
+## `v2017_09_01_1`
+
+* `GOPATH` env change from `/go` to `/bitrise/go`, for easier cross docker container sharing
+
+
+## `v2017_08_14_1`
 
 * `clang` is now pre-installed
+
 
 ## `v2017_08_08_1`
 
