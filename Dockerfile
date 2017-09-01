@@ -113,7 +113,7 @@ ENV PATH $PATH:/usr/local/go/bin
 # Go Workspace dirs & envs
 # From the official Golang Dockerfile
 #  https://github.com/docker-library/golang
-ENV GOPATH /go
+ENV GOPATH /bitrise/go
 ENV PATH $GOPATH/bin:$PATH
 # 755 because Ruby complains if 777 (warning: Insecure world writable dir ... in PATH)
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 755 "$GOPATH"
