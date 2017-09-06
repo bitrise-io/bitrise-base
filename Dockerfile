@@ -144,7 +144,7 @@ RUN sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/
 # For available docker-ce versions
 #  you can run `sudo apt-get update && sudo apt-cache policy docker-ce`
  && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    docker-ce=${TOOL_VER_DOCKER}~ce-0~ubuntu-$(lsb_release -cs)
+    docker-ce=${TOOL_VER_DOCKER}~ce-0~ubuntu
 
 
 # docker-compose
