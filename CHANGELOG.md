@@ -1,5 +1,11 @@
 ## UPCOMING
 
+## `v2017_09_07_1`
+
+* `Go`: `1.9`
+* `docker`: `17.06.2 CE`
+* `docker-compose`: `1.16.0`
+
 ## `v2017_09_01_1`
 
 * `GOPATH` env change from `/go` to `/bitrise/go`, for easier cross docker container sharing
