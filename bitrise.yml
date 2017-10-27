@@ -17,19 +17,19 @@ app:
   - QUAY_IMG_ID: quay.io/bitriseio/bitrise-base
   - QUAY_LOGIN_USER: $QUAY_LOGIN_USER
   - QUAY_LOGIN_PASS: $QUAY_LOGIN_PASS
-  - IS_ALPHA: true
+  - IS_ALPHA: "true"
 workflows:
   _alpha_envs:
     envs:
     - DOCKERHUB_IMG_ID: $DOCKERHUB_IMG_ID_ALPHA
     - DOCKER_FILE_PATH: $DOCKER_FILE_PATH_ALPHA
-    - IS_ALPHA: true
+    - IS_ALPHA: "true"
 
   _pinned_envs:
     envs:
     - DOCKERHUB_IMG_ID: $DOCKERHUB_IMG_ID_PINNED
     - DOCKER_FILE_PATH: $DOCKER_FILE_PATH_PINNED
-    - IS_ALPHA: false
+    - IS_ALPHA: "false"
 
   _generate_image_deploy_tag:
     steps:
