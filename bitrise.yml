@@ -12,7 +12,6 @@ app:
   - DOCKER_LOGIN_PASS: $DOCKER_LOGIN_PASS
   - SLACK_WEBHOOK_URL: $SLACK_WEBHOOK_URL
   - SLACK_CHANNEL: $SLACK_CHANNEL
-  - CONFIG_do_not_deploy_latest_tag: $CONFIG_do_not_deploy_latest_tag
 
   - QUAY_IMG_ID: quay.io/bitriseio/bitrise-base
   - QUAY_LOGIN_USER: $QUAY_LOGIN_USER
@@ -113,15 +112,11 @@ workflows:
             ### Push
             # Docker Hub
             docker push "${DOCKERHUB_IMG_ID}:${DOCKER_IMAGE_DEPLOY_TAG}"
-            if [[ "${CONFIG_do_not_deploy_latest_tag}" != "true" ]] ; then
-              docker push "${DOCKERHUB_IMG_ID}:latest"
-            fi
+            docker push "${DOCKERHUB_IMG_ID}:latest"
 
             # Quay.io
             docker push "${QUAY_IMG_ID}:${image_tag}"
-            if [[ "${CONFIG_do_not_deploy_latest_tag}" != "true" ]] ; then
-              docker push "${QUAY_IMG_ID}:${latest_image_tag}"
-            fi
+            docker push "${QUAY_IMG_ID}:${latest_image_tag}"
 
     - slack@2.1.0:
         run_if: '{{.IsCI | and .IsBuildFailed}}'
