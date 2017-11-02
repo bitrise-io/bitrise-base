@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-
+LABEL quay.expires-in=4w
 
 # ------------------------------------------------------
 # --- Environments and base directories
