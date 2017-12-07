@@ -71,6 +71,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
     tree \
     clang \
     imagemagick \
+    awscli \
 # For PPAs
     software-properties-common
 
