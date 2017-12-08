@@ -1,5 +1,10 @@
 ## UPCOMING
 
+## `v2017_12_08_1`
+
+* `aws` (CLI) preinstalled from `apt`
+    * thanks [@bootstraponline](https://github.com/bootstraponline) for the [PR](https://github.com/bitrise-docker/bitrise-base/pull/160)!
+
 ## `v2017_11_14_1`
 
 * `bitrise` (CLI): `1.10.1`
