@@ -1,5 +1,9 @@
 ## UPCOMING
 
+## `v2017_12_13_1`
+
+* `bitrise` (CLI): `1.11.0`
+
 ## `v2017_12_08_1`
 
 * `aws` (CLI) preinstalled from `apt`
