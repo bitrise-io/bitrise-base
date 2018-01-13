@@ -117,6 +117,12 @@ echo "========================================"
 echo
 
 echo
+echo "=== Docker pre-cached images ==========="
+docker images
+echo "========================================"
+echo
+
+echo
 echo "=== System infos ======================="
 echo "* Free disk space under / :"
 df -kh /
