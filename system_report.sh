@@ -118,7 +118,7 @@ echo
 
 echo
 echo "=== Docker pre-cached images ==========="
-docker images
+docker images --format '{{ .Repository }} - {{ .Size }}'
 echo "========================================"
 echo
 
