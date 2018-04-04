@@ -100,7 +100,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
  && cd / \
  && rm -rf /tmp/ruby-inst \
 # gem install bundler & rubygem update
- && gem update --system --no-document
+ && gem update --system --no-document \
  && gem install bundler --no-document
 
 
