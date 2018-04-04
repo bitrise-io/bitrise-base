@@ -1,5 +1,11 @@
 ## UPCOMING
 
+## `v2018_04_04_1`
+
+* `Go`: `1.10.1`
+* `Ruby`: `2.5.1`
+* `bundler` is back in the installation game
+
 ## `v2018_03_13_1`
 
 * `bitrise` (CLI): `1.14.0`
