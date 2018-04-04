@@ -99,8 +99,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
 # cleanup
  && cd / \
  && rm -rf /tmp/ruby-inst \
-# gem install rubygem update
+# gem install bundler & rubygem update
  && gem update --system --no-document
+ && gem install bundler --no-document
 
 
 # install Go
