@@ -21,7 +21,7 @@ ENV LANG="en_US.UTF-8" \
     BITRISE_TMP_DIR="/bitrise/tmp" \
 
 # Configs - tool versions
-    TOOL_VER_BITRISE_CLI="1.14.0" \
+    TOOL_VER_BITRISE_CLI="1.15.0" \
     TOOL_VER_RUBY="2.5.1" \
     TOOL_VER_GO="1.10.1" \
     TOOL_VER_DOCKER="17.12.0" \
@@ -195,5 +195,5 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git-lfs \
 
 WORKDIR $BITRISE_SOURCE_DIR
 
-ENV BITRISE_DOCKER_REV_NUMBER_BASE v2018_04_04_1
+ENV BITRISE_DOCKER_REV_NUMBER_BASE v2018_04_11_1
 CMD bitrise --version
