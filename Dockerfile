@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 
 # ------------------------------------------------------
@@ -195,5 +195,5 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git-lfs \
 
 WORKDIR $BITRISE_SOURCE_DIR
 
-ENV BITRISE_DOCKER_REV_NUMBER_BASE v2018_04_11_1
+ENV BITRISE_DOCKER_REV_NUMBER_BASE v2018_05_07_1
 CMD bitrise --version
