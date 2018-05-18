@@ -1,5 +1,10 @@
 ## UPCOMING
 
+## `v2018_05_18_1`
+
+* `Go`: `1.10.2`
+* `bundler` removed again
+
 ## `v2018_05_16_1`
 
 * `bitrise` (CLI): `1.16.1`
