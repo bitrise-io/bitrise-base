@@ -23,7 +23,7 @@ ENV LANG="en_US.UTF-8" \
 # Configs - tool versions
     TOOL_VER_BITRISE_CLI="1.16.1" \
     TOOL_VER_RUBY="2.5.1" \
-    TOOL_VER_GO="1.10.1" \
+    TOOL_VER_GO="1.10.2" \
     TOOL_VER_DOCKER="17.12.0" \
     TOOL_VER_DOCKER_COMPOSE="1.19.0"
 
@@ -99,9 +99,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
 # cleanup
  && cd / \
  && rm -rf /tmp/ruby-inst \
-# gem install bundler & rubygem update
- && gem update --system --no-document \
- && gem install bundler --no-document
+ && gem update --system --no-document
+ RUN [ -x "$(command -v bundle)" ] || gem install bundler --no-document
 
 
 # install Go
@@ -195,5 +194,5 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git-lfs \
 
 WORKDIR $BITRISE_SOURCE_DIR
 
-ENV BITRISE_DOCKER_REV_NUMBER_BASE v2018_05_16_1
+ENV BITRISE_DOCKER_REV_NUMBER_BASE v2018_05_18_1
 CMD bitrise --version
