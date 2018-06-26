@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 
 # ------------------------------------------------------
@@ -19,13 +19,12 @@ ENV LANG="en_US.UTF-8" \
     BITRISE_CACHE_DIR="/bitrise/cache" \
     BITRISE_PREP_DIR="/bitrise/prep" \
     BITRISE_TMP_DIR="/bitrise/tmp" \
-
 # Configs - tool versions
     TOOL_VER_BITRISE_CLI="1.17.0" \
     TOOL_VER_RUBY="2.5.1" \
     TOOL_VER_GO="1.10.3" \
-    TOOL_VER_DOCKER="17.12.0" \
-    TOOL_VER_DOCKER_COMPOSE="1.19.0"
+    TOOL_VER_DOCKER="18.03.1" \
+    TOOL_VER_DOCKER_COMPOSE="1.21.2"
 
 # create base dirs
 RUN mkdir -p ${BITRISE_SOURCE_DIR} \
@@ -144,7 +143,7 @@ RUN sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/
 # For available docker-ce versions
 #  you can run `sudo apt-get update && sudo apt-cache policy docker-ce`
  && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    docker-ce=${TOOL_VER_DOCKER}~ce-0~ubuntu
+    docker-ce=${TOOL_VER_DOCKER}~ce~3-0~ubuntu
 
 
 # docker-compose
@@ -194,5 +193,5 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git-lfs \
 
 WORKDIR $BITRISE_SOURCE_DIR
 
-ENV BITRISE_DOCKER_REV_NUMBER_BASE v2018_06_15_1
+ENV BITRISE_DOCKER_REV_NUMBER_BASE v2018_06_26_1
 CMD bitrise --version
