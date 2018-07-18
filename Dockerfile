@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:16.04
 
 
 # ------------------------------------------------------
@@ -143,7 +143,8 @@ RUN sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/
 # For available docker-ce versions
 #  you can run `sudo apt-get update && sudo apt-cache policy docker-ce`
  && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    docker-ce=${TOOL_VER_DOCKER}~ce~3-0~ubuntu
+    docker-ce=${TOOL_VER_DOCKER}~ce-0~ubuntu
+
 
 
 # docker-compose
@@ -193,5 +194,5 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git-lfs \
 
 WORKDIR $BITRISE_SOURCE_DIR
 
-ENV BITRISE_DOCKER_REV_NUMBER_BASE v2018_07_12_1
+ENV BITRISE_DOCKER_REV_NUMBER_BASE v2018_07_18_1
 CMD bitrise --version
