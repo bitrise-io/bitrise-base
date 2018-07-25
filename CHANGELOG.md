@@ -4,6 +4,10 @@
 
 * Ubuntu version has been temporarily rolled back to 16.04 because of a Gradle issue with the 18.04 Docker image (https://github.com/gradle/gradle/issues/3117)
 
+## `v2018_07_25_1`
+
+* `bitrise` (CLI): `1.20.0`
+
 ## `v2018_07_12_1`
 
 * `bitrise` (CLI): `1.19.0`
