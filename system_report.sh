@@ -88,7 +88,7 @@ ver_line="$(/root/.bitrise/tools/envman --version)" ;  echo "* envman: $ver_line
 if [[ "$CI" == "false" ]] ; then
 set +e
 fi
-ver_line="$(bitrise-bridge --version)" ;          echo "* bitrise-bridge: $ver_line"
+ver_line="$(bitrise-bridge --version || echo 'No bitrise-bridge installed')" ;          echo "* bitrise-bridge: $ver_line"
 set -e
 echo "========================================"
 echo
