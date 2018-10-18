@@ -16,6 +16,9 @@ the [bitrise.io GitHub repository](https://github.com/bitrise-io/bitrise.io),
 under the `system_reports` folder. The `system_report.sh` script can be run with `docker-compose` locally too,
 with: `docker-compose run --rm app bash system_report.sh`.
 
+[Request a feature](https://discuss.bitrise.io/c/feature-request)
+
+[Report an issue](https://discuss.bitrise.io/c/issues/other-issues)
 
 ## Deployment and versions on [Docker Hub](https://hub.docker.com/)
 
