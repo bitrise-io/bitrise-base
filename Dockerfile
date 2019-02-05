@@ -9,17 +9,17 @@ FROM ubuntu:16.04
 ENV LANG="en_US.UTF-8" \
     LANGUAGE="en_US.UTF-8" \
     LC_ALL="en_US.UTF-8" \
-# - CI
+    # - CI
     CI="true" \
     BITRISE_IO="true" \
-# - main dirs
+    # - main dirs
     BITRISE_SOURCE_DIR="/bitrise/src" \
     BITRISE_BRIDGE_WORKDIR="/bitrise/src" \
     BITRISE_DEPLOY_DIR="/bitrise/deploy" \
     BITRISE_CACHE_DIR="/bitrise/cache" \
     BITRISE_PREP_DIR="/bitrise/prep" \
     BITRISE_TMP_DIR="/bitrise/tmp" \
-# Configs - tool versions
+    # Configs - tool versions
     TOOL_VER_BITRISE_CLI="1.26.0" \
     TOOL_VER_RUBY="2.5.1" \
     TOOL_VER_GO="1.11.2" \
@@ -28,11 +28,11 @@ ENV LANG="en_US.UTF-8" \
 
 # create base dirs
 RUN mkdir -p ${BITRISE_SOURCE_DIR} \
- && mkdir -p ${BITRISE_DEPLOY_DIR} \
- && mkdir -p ${BITRISE_CACHE_DIR} \
- && mkdir -p ${BITRISE_TMP_DIR} \
-# prep dir
- && mkdir -p ${BITRISE_PREP_DIR}
+    && mkdir -p ${BITRISE_DEPLOY_DIR} \
+    && mkdir -p ${BITRISE_CACHE_DIR} \
+    && mkdir -p ${BITRISE_TMP_DIR} \
+    # prep dir
+    && mkdir -p ${BITRISE_PREP_DIR}
 
 # switch to temp/prep workdir, for the duration of the provisioning
 WORKDIR ${BITRISE_PREP_DIR}
@@ -46,12 +46,12 @@ RUN apt-get update -qq
 # Install the "locales" package - required for locale-gen
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
     locales \
-# Do Locale gen
- && locale-gen en_US.UTF-8
+    # Do Locale gen
+    && locale-gen en_US.UTF-8
 
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
-# Requiered for Bitrise CLI
+    # Requiered for Bitrise CLI
     git \
     mercurial \
     curl \
@@ -59,11 +59,11 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
     rsync \
     sudo \
     expect \
-# Python
+    # Python
     python \
     python-dev \
     python-pip \
-# Common, useful
+    # Common, useful
     build-essential \
     zip \
     unzip \
@@ -71,7 +71,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
     clang \
     imagemagick \
     awscli \
-# For PPAs
+    # For PPAs
     software-properties-common
 
 
@@ -89,24 +89,24 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
     libreadline6-dev \
     libyaml-dev \
     libsqlite3-dev \
- && mkdir -p /tmp/ruby-inst \
- && cd /tmp/ruby-inst \
- && wget -q http://cache.ruby-lang.org/pub/ruby/ruby-${TOOL_VER_RUBY}.tar.gz \
- && tar -xvzf ruby-${TOOL_VER_RUBY}.tar.gz \
- && cd ruby-${TOOL_VER_RUBY} \
- && ./configure --prefix=/usr/local && make && make install \
-# cleanup
- && cd / \
- && rm -rf /tmp/ruby-inst \
- && gem update --system --no-document
- RUN [ -x "$(command -v bundle)" ] || gem install bundler --no-document
+    && mkdir -p /tmp/ruby-inst \
+    && cd /tmp/ruby-inst \
+    && wget -q http://cache.ruby-lang.org/pub/ruby/ruby-${TOOL_VER_RUBY}.tar.gz \
+    && tar -xvzf ruby-${TOOL_VER_RUBY}.tar.gz \
+    && cd ruby-${TOOL_VER_RUBY} \
+    && ./configure --prefix=/usr/local && make && make install \
+    # cleanup
+    && cd / \
+    && rm -rf /tmp/ruby-inst \
+    && gem update --system --no-document
+RUN [ -x "$(command -v bundle)" ] || gem install bundler --no-document
 
 
 # install Go
 #  from official binary package
 RUN wget -q https://storage.googleapis.com/golang/go${TOOL_VER_GO}.linux-amd64.tar.gz -O go-bins.tar.gz \
- && tar -C /usr/local -xvzf go-bins.tar.gz \
- && rm go-bins.tar.gz
+    && tar -C /usr/local -xvzf go-bins.tar.gz \
+    && rm go-bins.tar.gz
 # ENV setup
 ENV PATH $PATH:/usr/local/go/bin
 # Go Workspace dirs & envs
@@ -138,19 +138,19 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
     ca-certificates
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 RUN sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
- && DEBIAN_FRONTEND=noninteractive apt-get update -qq \
- && DEBIAN_FRONTEND=noninteractive apt-cache policy docker-ce \
-# For available docker-ce versions
-#  you can run `sudo apt-get update && sudo apt-cache policy docker-ce`
- && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    && DEBIAN_FRONTEND=noninteractive apt-get update -qq \
+    && DEBIAN_FRONTEND=noninteractive apt-cache policy docker-ce \
+    # For available docker-ce versions
+    #  you can run `sudo apt-get update && sudo apt-cache policy docker-ce`
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     docker-ce=${TOOL_VER_DOCKER}~ce-0~ubuntu
 
 
 
 # docker-compose
 RUN wget -q https://github.com/docker/compose/releases/download/${TOOL_VER_DOCKER_COMPOSE}/docker-compose-`uname -s`-`uname -m` -O /usr/local/bin/docker-compose \
- && chmod +x /usr/local/bin/docker-compose \
- && docker-compose --version
+    && chmod +x /usr/local/bin/docker-compose \
+    && docker-compose --version
 
 
 # ------------------------------------------------------
@@ -159,14 +159,14 @@ RUN wget -q https://github.com/docker/compose/releases/download/${TOOL_VER_DOCKE
 #
 # Install Bitrise CLI
 RUN wget -q https://github.com/bitrise-io/bitrise/releases/download/${TOOL_VER_BITRISE_CLI}/bitrise-$(uname -s)-$(uname -m) -O /usr/local/bin/bitrise \
- && chmod +x /usr/local/bin/bitrise \
- && bitrise setup \
- && bitrise envman -version \
- && bitrise stepman -version \
-# setup the default StepLib collection to stepman, for a pre-warmed
-#  cache for the StepLib
- && bitrise stepman setup -c https://github.com/bitrise-io/bitrise-steplib.git \
- && bitrise stepman update
+    && chmod +x /usr/local/bin/bitrise \
+    && bitrise setup \
+    && bitrise envman -version \
+    && bitrise stepman -version \
+    # setup the default StepLib collection to stepman, for a pre-warmed
+    #  cache for the StepLib
+    && bitrise stepman setup -c https://github.com/bitrise-io/bitrise-steplib.git \
+    && bitrise stepman update
 
 
 # ------------------------------------------------------
@@ -177,8 +177,8 @@ COPY ./ssh/config /root/.ssh/config
 # ------------------------------------------------------
 # --- Git config
 
-RUN git config --global user.email builds@bitrise.io \
- && git config --global user.name "Bitrise Bot"
+RUN git config --global user.email email@example.com \
+    && git config --global user.name "J. Doe"
 
 
 # ------------------------------------------------------
@@ -186,7 +186,7 @@ RUN git config --global user.email builds@bitrise.io \
 
 RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git-lfs \
- && git lfs install
+    && git lfs install
 
 
 # ------------------------------------------------------
@@ -194,5 +194,5 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git-lfs \
 
 WORKDIR $BITRISE_SOURCE_DIR
 
-ENV BITRISE_DOCKER_REV_NUMBER_BASE v2019_01_09_1
+ENV BITRISE_DOCKER_REV_NUMBER_BASE v2019_02_05_1
 CMD bitrise --version
