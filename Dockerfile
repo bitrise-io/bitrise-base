@@ -177,8 +177,8 @@ COPY ./ssh/config /root/.ssh/config
 # ------------------------------------------------------
 # --- Git config
 
-RUN git config --global user.email email@example.com \
-    && git config --global user.name "J. Doe"
+RUN git config --global user.email "please-set-your-email@bitrise.io" \
+    && git config --global user.name "J. Doe (https://www.git-tower.com/learn/git/faq/change-author-name-email)"
 
 
 # ------------------------------------------------------
