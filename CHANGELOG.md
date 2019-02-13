@@ -1,5 +1,9 @@
 ## UPCOMING
 
+## `v2019_02_13_2`
+
+* `bitrise` (CLI): `1.27.0`
+
 ## `v2019_02_13_1`
 
 * `git` default user changed to "J. Doe (https://www.git-tower.com/learn/git/faq/change-author-name-email)" and default email to "please-set-your-email@bitrise.io"
