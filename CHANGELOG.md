@@ -1,5 +1,9 @@
 ## UPCOMING
 
+## `v2019_02_13_2`
+
+* `bitrise` (CLI): `1.27.0`
+
 ## `v2019_02_05_1`
 
 * `git` default user changed to "J. Doe" and default email to "email@example.com"
