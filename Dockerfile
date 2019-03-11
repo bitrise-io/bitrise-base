@@ -70,7 +70,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
     tree \
     clang \
     imagemagick \
-    awscli \
+    groff \
     # For PPAs
     software-properties-common
 
@@ -78,6 +78,10 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
 
 # ------------------------------------------------------
 # --- Pre-installed but not through apt-get
+
+# install AWSCLI from pip and add it to the PATH
+RUN ["pip", "install", "awscli"]
+ENV PATH /root/.local/bin:$PATH
 
 # install Ruby from source
 #  from source: mainly because of GEM native extensions,

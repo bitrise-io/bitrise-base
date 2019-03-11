@@ -1,5 +1,10 @@
 ## UPCOMING
 
+
+## `v2019_03_11_2`
+
+* `awscli` changed installation method from apt-get to pip, added groff install (it is a dependency of awscli)
+
 ## `v2019_03_11_1`
 
 * `git` default user changed to "J. Doe (https://devcenter.bitrise.io/builds/setting-your-git-credentials-on-build-machines/)"
