@@ -1,5 +1,9 @@
 ## UPCOMING
 
+## `v2019_03_23_1`
+
+* `bitrise` (CLI): `1.28.0`
+
 ## `v2019_03_11_1`
 
 * `git` default user changed to "J. Doe (https://devcenter.bitrise.io/builds/setting-your-git-credentials-on-build-machines/)"
