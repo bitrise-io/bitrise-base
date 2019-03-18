@@ -20,7 +20,7 @@ ENV LANG="en_US.UTF-8" \
     BITRISE_PREP_DIR="/bitrise/prep" \
     BITRISE_TMP_DIR="/bitrise/tmp" \
     # Configs - tool versions
-    TOOL_VER_BITRISE_CLI="1.27.1" \
+    TOOL_VER_BITRISE_CLI="1.28.0" \
     TOOL_VER_RUBY="2.5.1" \
     TOOL_VER_GO="1.11.2" \
     TOOL_VER_DOCKER="18.03.1" \
@@ -197,5 +197,5 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git-lfs \
 
 WORKDIR $BITRISE_SOURCE_DIR
 
-ENV BITRISE_DOCKER_REV_NUMBER_BASE v2019_02_20_1
+ENV BITRISE_DOCKER_REV_NUMBER_BASE v2019_03_13_1
 CMD bitrise --version
