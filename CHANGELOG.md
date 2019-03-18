@@ -1,8 +1,12 @@
 ## UPCOMING
 
-## `v2019_03_23_1`
+## `v2019_03_13_1`
 
 * `bitrise` (CLI): `1.28.0`
+
+## `v2019_03_11_2`
+
+* `awscli` changed installation method from apt-get to pip, added groff install (it is a dependency of awscli)
 
 ## `v2019_03_11_1`
 
