@@ -23,7 +23,7 @@ ENV LANG="en_US.UTF-8" \
     TOOL_VER_BITRISE_CLI="1.28.0" \
     TOOL_VER_RUBY="2.5.1" \
     TOOL_VER_GO="1.11.2" \
-    TOOL_VER_DOCKER="18.03.1" \
+    TOOL_VER_DOCKER="5:18.09.4" \
     TOOL_VER_DOCKER_COMPOSE="1.21.2"
 
 # create base dirs
@@ -146,7 +146,7 @@ RUN sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/
     # For available docker-ce versions
     #  you can run `sudo apt-get update && sudo apt-cache policy docker-ce`
     && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    docker-ce=${TOOL_VER_DOCKER}~ce-0~ubuntu
+    docker-ce=${TOOL_VER_DOCKER}~3-0~ubuntu-xenial
 
 
 
@@ -197,5 +197,5 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git-lfs \
 
 WORKDIR $BITRISE_SOURCE_DIR
 
-ENV BITRISE_DOCKER_REV_NUMBER_BASE v2019_03_13_1
+ENV BITRISE_DOCKER_REV_NUMBER_BASE v2019_03_29_1
 CMD bitrise --version
