@@ -22,7 +22,7 @@ ENV LANG="en_US.UTF-8" \
     # Configs - tool versions
     TOOL_VER_BITRISE_CLI="1.29.0" \
     TOOL_VER_RUBY="2.5.1" \
-    TOOL_VER_GO="1.11.2" \
+    TOOL_VER_GO="1.12.5" \
     TOOL_VER_DOCKER="5:18.09.4" \
     TOOL_VER_DOCKER_COMPOSE="1.21.2"
 
