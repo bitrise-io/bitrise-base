@@ -1,5 +1,7 @@
 ## UPCOMING
 
+* `bitrise` (CLI): `1.30.0`
+
 ## `v2019_04_10_1`
 
 * `bitrise` (CLI): `1.29.0`
