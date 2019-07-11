@@ -4,7 +4,7 @@
 # Read more about how versions are handled in the `README.md`.
 
 
-FROM quay.io/bitriseio/bitrise-base:alpha-v2019_07_04-02_02-b1682
+FROM quay.io/bitriseio/bitrise-base:alpha-v2019_07_11-02_02-b1690
 
 
 CMD bitrise --version
