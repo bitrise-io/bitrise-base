@@ -1,5 +1,9 @@
 ## UPCOMING
 
+## `v2019_08_28_1`
+
+* NodeJS upgrade from v8 to v10
+
 ## `v2019_08_21_1`
 
 * `bitrise` (CLI): `1.33.0`
