@@ -123,7 +123,7 @@ RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 755 "$GOPATH"
 
 # Install NodeJS
 #  from official docs: https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
-RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 RUN sudo apt-get install -y nodejs
 
 
@@ -197,5 +197,5 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git-lfs \
 
 WORKDIR $BITRISE_SOURCE_DIR
 
-ENV BITRISE_DOCKER_REV_NUMBER_BASE v2019_08_21_1
+ENV BITRISE_DOCKER_REV_NUMBER_BASE v2019_08_28_1
 CMD bitrise --version
