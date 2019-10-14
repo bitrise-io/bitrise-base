@@ -88,3 +88,5 @@ Due to how docker handles volumes / shared folders right now, if you move files 
 it'll have to do a full file copy,
 while if you move files inside a volume / shared dir (`/bitrise` in this case)
 that will be a simple rename, no file copy required.
+
+beitris test
