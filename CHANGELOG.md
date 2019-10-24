@@ -1,5 +1,9 @@
 ## UPCOMING
 
+## `v2019_09_11_24`
+
+* `bitrise` (CLI): `1.35.0`
+
 ## `v2019_09_17_1`
 
 * Golang upgraded from 1.12.5 to 1.13
