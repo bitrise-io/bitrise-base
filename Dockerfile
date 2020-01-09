@@ -126,6 +126,10 @@ RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 755 "$GOPATH"
 RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 RUN sudo apt-get install -y nodejs
 
+# Install npm 
+# releases: https://github.com/npm/cli/releases
+RUN npm install -g npm@6.13.4
+
 
 # Install Yarn
 # as described at: https://yarnpkg.com/en/docs/install#linux-tab
