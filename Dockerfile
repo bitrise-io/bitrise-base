@@ -23,7 +23,7 @@ ENV LANG="en_US.UTF-8" \
     TOOL_VER_BITRISE_CLI="1.39.1" \
     TOOL_VER_RUBY="2.7.0" \
     TOOL_VER_GO="1.13" \
-    TOOL_VER_DOCKER="5:18.09.4" \
+    TOOL_VER_DOCKER="5:19.03.0" \
     TOOL_VER_DOCKER_COMPOSE="1.21.2"
 
 # create base dirs
