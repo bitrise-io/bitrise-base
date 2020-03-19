@@ -2,5 +2,7 @@
 # and published. Pinned versions are considered production ready, and the "latest" pinned version
 # is pre-cached on https://www.bitrise.io/ Linux/Android Virtual Machines.
 # Read more about how versions are handled in the README.md
-FROM quay.io/bitriseio/bitrise-base:alpha-v2020_03_06-02_02-b2000
+
+FROM quay.io/bitriseio/bitrise-base:alpha-v2020_03_19-02_02-b2015
+
 CMD bitrise --version
