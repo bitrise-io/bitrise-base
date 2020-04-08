@@ -1,5 +1,8 @@
 ## UPCOMING
 
+## 'v2020_04_08_1'
+* `Bitrise cli updated to 1.40.1`
+
 ## 'v2020_03_11_1'
 * `Docker engine updated to 19.03.0`
 
