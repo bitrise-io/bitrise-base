@@ -1,5 +1,8 @@
 ## UPCOMING
 
+## 'v2020_05_19_1'
+* `Bitrise cli updated to 1.42.0`
+
 ## 'v2020_04_28_1'
 * `Bitrise cli updated to 1.41.2`
 
