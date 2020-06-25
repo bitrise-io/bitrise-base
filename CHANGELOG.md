@@ -1,5 +1,8 @@
 ## UPCOMING
 
+## 'v2020_06_25_1'
+* `Node.js updated to use latest LTS - 12.x`
+
 ## 'v2020_05_19_1'
 * `Bitrise cli updated to 1.42.0`
 
