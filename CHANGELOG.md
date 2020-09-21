@@ -1,5 +1,9 @@
 ## UPCOMING
 
+## `v2020_09_21_1`
+
+* Golang upgraded from 1.13 to 1.15.2
+
 ## 'v2020_06_25_1'
 * `Node.js updated to use latest LTS - 12.x`
 
