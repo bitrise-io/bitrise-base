@@ -1,5 +1,8 @@
 ## UPCOMING
 
+## 'v2020_11_03'
+* `Bitrise cli updated to 1.44.0`
+
 ## `v2020_09_21_1`
 
 * Golang upgraded from 1.13 to 1.15.2
