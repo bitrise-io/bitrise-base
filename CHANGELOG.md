@@ -2,7 +2,7 @@
 
 ## `v2020_11_27_1`
 
-* jq preinstalled
+* `jq preinstalled`
 
 ## 'v2020_11_03'
 * `Bitrise cli updated to 1.44.0`
