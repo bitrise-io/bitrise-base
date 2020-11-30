@@ -75,6 +75,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
     software-properties-common
 
 
+# --- Pre-install jq
+RUN sudo apt-get -y install jq
+
 
 # ------------------------------------------------------
 # --- Pre-installed but not through apt-get
