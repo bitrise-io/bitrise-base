@@ -72,11 +72,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
     imagemagick \
     groff \
     # For PPAs
-    software-properties-common
-
-
-# --- Pre-install jq
-RUN sudo apt-get -y install jq
+    software-properties-common\
+    jq
 
 
 # ------------------------------------------------------
