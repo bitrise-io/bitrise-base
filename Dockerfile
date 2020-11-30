@@ -71,9 +71,10 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
     clang \
     imagemagick \
     groff \
+    jq \
     # For PPAs
-    software-properties-common \
-    jq
+    software-properties-common
+
 
 
 # ------------------------------------------------------
