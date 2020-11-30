@@ -56,7 +56,7 @@ ver_line="$(node --version)" ;                    echo "* Node.js: $ver_line"
 ver_line="$(npm --version)" ;                     echo "* NPM: $ver_line"
 ver_line="$(yarn --version)" ;                    echo "* Yarn: $ver_line"
 ver_line="$(aws --version)" ;                     echo "* aws: $ver_line"
-ver_line="$(jq --version)" ;                 echo "* jq: $ver_line"
+ver_line="$(jq --version)" ;                      echo "* jq: $ver_line"
 
 echo
 ver_line="$(git --version)" ;                     echo "* git: $ver_line"
