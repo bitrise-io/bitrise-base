@@ -1,5 +1,9 @@
 ## UPCOMING
 
+## `v2020_12_01_1`
+
+* `aws-cli preinstalled`
+
 ## `v2020_11_27_1`
 
 * `jq preinstalled`

@@ -72,6 +72,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
     imagemagick \
     groff \
     jq \
+    awscli \
     # For PPAs
     software-properties-common
 
