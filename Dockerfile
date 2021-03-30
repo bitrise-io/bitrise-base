@@ -49,6 +49,12 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
     # Do Locale gen
     && locale-gen en_US.UTF-8
 
+# --- Add ppa
+RUN apt-key adv --refresh-keys --keyserver keyserver.ubuntu.com \
+    # For PPAs
+    && DEBIAN_FRONTEND=noninteractive apt-get -y install software-properties-common \
+    && add-apt-repository ppa:git-core/ppa \
+    && apt-get update -qq
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
     # Requiered for Bitrise CLI
@@ -72,11 +78,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install \
     imagemagick \
     groff \
     jq \
-    awscli \
-    # For PPAs
-    software-properties-common
-
-
+    awscli
 
 # ------------------------------------------------------
 # --- Pre-installed but not through apt-get
