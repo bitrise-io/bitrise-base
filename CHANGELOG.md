@@ -1,5 +1,8 @@
 ## UPCOMING
 
+## `v2021_03_30`
+* `update git version to latest (2.31.1)`
+
 ## `v2020_12_01_1`
 
 * `aws-cli preinstalled`
