@@ -1,5 +1,8 @@
 ## UPCOMING
 
+## `v2021_09_28`
+* `update bitrise cli to 1.48.0`
+
 ## `v2021_03_30`
 * `update git version to latest (2.31.1)`
 
