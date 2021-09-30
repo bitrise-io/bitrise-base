@@ -22,7 +22,7 @@ ENV LANG="en_US.UTF-8" \
     # Configs - tool versions
     TOOL_VER_BITRISE_CLI="1.48.0" \
     TOOL_VER_RUBY="2.7.0" \
-    TOOL_VER_GO="1.15.2" \
+    TOOL_VER_GO="1.16.5" \
     TOOL_VER_DOCKER="5:19.03.0" \
     TOOL_VER_DOCKER_COMPOSE="1.21.2"
 
@@ -205,5 +205,5 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git-lfs \
 
 WORKDIR $BITRISE_SOURCE_DIR
 
-ENV BITRISE_DOCKER_REV_NUMBER_BASE v2021_09_28
+ENV BITRISE_DOCKER_REV_NUMBER_BASE v2021_09_30
 CMD bitrise --version
