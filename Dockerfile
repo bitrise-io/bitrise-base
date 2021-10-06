@@ -44,9 +44,8 @@ RUN apt-get update -qq
 #
 # This is a workaround / fix story is in the backlog
 #
-RUN rm /etc/ssl/certs/DST_Root_CA_X3.pem \
-    && sed -i '/mozilla\/DST_Root_CA_X3.crt/d' /etc/ca-certificates.conf \
-    && update-ca-certificates --fresh
+RUN sudo apt-get install ca-certificates -y \
+    && sudo update-ca-certificates --fresh
 # Generate proper EN US UTF-8 locale
 # Install the "locales" package - required for locale-gen
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
