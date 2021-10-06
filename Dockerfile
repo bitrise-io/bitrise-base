@@ -44,8 +44,8 @@ RUN apt-get update -qq
 #
 # This is a workaround / fix story is in the backlog
 #
-RUN sudo apt-get install ca-certificates -y \
-    && sudo update-ca-certificates --fresh
+RUN apt-get install ca-certificates -y \
+    && update-ca-certificates --fresh
 # Generate proper EN US UTF-8 locale
 # Install the "locales" package - required for locale-gen
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
